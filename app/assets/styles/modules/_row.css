@@ -1,0 +1,79 @@
+.row{
+
+    /* This CSS selector will add a blank space after all
+    the content in the main 'row' div
+    */
+    @mixin clearFix;
+
+    &__b-margin-until-medium{
+        margin-bottom: 1rem;
+    }
+
+    @mixin atMedium{
+
+        /*
+        Gutters here stands for padding
+        '> div' selects all direct childrens that use a tag of div which means
+        it will target the __4 and __8 divs
+        */
+        &--gutters > div {
+            /*
+            Padding right is useful to create a spacing between each row of the simulated 12 grid
+            system
+             */
+            padding-right: 65px;
+            /*
+            The 'box-sizing' will cause the extra padding (65px) added not to extend
+            the full width of the page since 33.33 + 66.66 already does 99.99% 
+            of the page's width
+
+            You don't see any mention of the 'box-sizing' property on this file,
+            this is because it is applied globaly in the '_global.css' file,
+            developers tend to apply this 'box-sizing' globally
+            (which means on every single element of the page) *{box-sizing: border-box}
+            */
+        }
+
+        &--gutters{
+            /*
+            This negative margin applied removes the final gutter of 65px at the end
+             */
+            margin-right: -65px;
+        }
+
+        &__b-margin-until-medium{
+            /*
+            When the size is >= to medium, we remove the extra margin space
+            put for mobile devices
+             */
+            margin-bottom: 0;
+        }
+
+        /* The image takes 1 third of the page */
+        &__medium-4{
+            /* Floating an element takes it out of the normal flow of the page */
+            /* Therefore, the row element should now how much place it should take */
+            /* We need to clear the floats before continuing */
+            float: left;
+            width: 33.33%;
+            
+            &--larger{
+                width: 37%;  /* Because on the design, the image looks a little bigger */
+            }
+
+        }
+
+        /* The image takes 2 third of the page */
+        &____medium-8{
+            float: left;
+            width: 66.66%;
+
+            &--smaller{
+                width: 63%;  /* Because on the design, the text looks a little smaller */
+            }
+
+        }
+
+    }
+
+}

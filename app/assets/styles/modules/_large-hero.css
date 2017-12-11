@@ -1,0 +1,111 @@
+/*
+Beginning a file with an underscore tells the developers to consider this file
+a PARTIAL file not designed to be used on its own
+It is intended to be imported
+*/
+
+/*
+***
+BEM
+***
+
+B: Block    --> class="block"
+A block is an independent resusable part of our design
+
+E: Element  --> class="block__element"
+An element belongs to a block. It cannot be used outside of the block it belongs to
+
+M: Modifier   --> class="block__element--modifier"
+A modifier can be used on a block or an element to indicate a change
+to the default state of an object
+*/
+
+/*
+*****
+Yrem;
+*****
+
+rem refers to the default font size of the root <html> element
+Thus, applying a font size of 1.5rem will multiply the default <html> font size by 1.5
+Most web browsers will have a default font size of the <html> element of 16 pixels
+(1.5 rem is equal to 1.5 * 16 = 24px)
+
+The beauty in that is that it allows developers to honor the font size
+of the user's device which can change (mobile, desktop, tablet)
+Using rem will scale accordingly to the user's font-size preference
+
+You can also measure the size of a letter to get the font in pixel
+then divide the result by 16 so you get the value in rem
+You can also apply this trick to block width:
+For example, you need a block to be 480px, you can put instead (480px / 16px) rem
+so it adapts automatically whatever the screen size
+
+*/
+.large-hero{
+  position: relative;
+  border-bottom: 10px solid $mainBlue;
+
+  &__image{
+    /*
+    When creating an image, the browser treats it as a default inline element
+    as if the element was similar to a text
+    This means, it will leave a little margin (some room)
+    for characters that have let say a 'bottom part'
+    like (p, g, y, ...)
+    Specifying the image as a block will remove that little margin
+    */
+    display: block;
+  }
+
+  &__text-content{
+    position: absolute;
+    left: 0;
+    /* width and text-align just to center the text horizontally */
+    width: 100%;
+    text-align: center;
+    top: 50%;
+    transform: translateY(-50%);  /* Translate if to half of its own height, a negative value pulls it up */
+  }
+
+  &__title{
+    font-weight: 300;
+    color: $mainBlue;
+    margin: 0;
+    font-size: 2.4rem;
+
+    /*
+    In the mobile first philisophy, we treat the mobile view as the baseline
+    and modify things from there as necessary
+    */
+    @mixin atSmall{
+      font-size: 4.8rem;
+    }
+
+  }
+
+  &__subtitle{
+    font-weight: 300;
+    color: $mainBlue;
+    font-size: 1.5rem;
+    margin: 0;
+
+    @mixin atSmall{
+      font-size: 2.9rem;
+    }
+  }
+
+  &__description{
+    color: #FFF;
+    font-size: 1.1rem;
+    font-weight: 100;
+    text-shadow: 2px 2px 0 rgba(0, 0, 0, .1);
+    max-width: 30rem;
+    margin-left: auto;
+    margin-right: auto;
+
+    @mixin atSmall{
+      font-size: 1.875rem;
+    }
+  }
+
+}

@@ -1,0 +1,26 @@
+.generic-content-container{
+    /*
+    We select each paragrah nested in that 'generic-content-container' element
+    */
+
+    p{
+        /* There is more space between each line, actually, this property does not require any
+        measurement unit like rem, em, px, ... */
+        line-height: 1.65;
+        margin: 1.8rem 0;
+        font-size: 0.9rem;
+        @mixin atSmall{
+            font-size: 1rem;    /* The author applied 1.125rem which is too much for me... */
+        }
+    }
+
+    /*
+    For any links that lives in a paragraph
+    We could have nested that element into the previous 'p' rule
+    (but the author does not like nesting that goes beyond 2 levels)
+    */
+    p a {
+        /* By default, the font-weight is 100 */
+        font-weight: 700;
+    }
+}

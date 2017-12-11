@@ -6,11 +6,12 @@
   <title>Clear View Escapes</title>
   <meta name="keywords" content="Travel planning, travel bundles, travel escapes, affordable travel">
   <meta name="description" content="Your clarity. One trip away. We create soul restoring journeys that inspire you to be you.">
+  <link rel="stylesheet" href="temp/styles/styles.css">
 </head>
 <body>
   <header>
     <img src="assets/images/icons/clear-view-escapes.svg">
-    <a href="#">Get in Touch</a>
+    <a href="#" class="btn">Get in Touch</a>
     <nav>
       <ul>
         <li><a href="#our-beginning">Our Beginning</a></li>
@@ -20,44 +21,160 @@
     </nav>
   </header>
 
+  <!-- Just for info, we use a normal image (and not a background image),
+  because it is easier to deal with responsivness with an <img /> tag -->
+
+  <!-- A responsive image is not only about the size, but also about the cropping -->
+  <!-- We use a <picture> so we can send different cropped image files
+    to different screen size
+    To sum up, we have 3 aspects to take into account
+    when dealing with responsive images:
+    - size of the image
+    - resolution of the image
+    - cropping of the image
+
+    The 'srcset' attribute allows the user to download the appropriate image
+    depending on the device physical properties
+    A device is self aware and knows the size of their own screen
+    and the pixel density of their own screen
+
+    Indeed, browser and device are intelligent enough to know
+    how to pick the right image but we need to gide them since they both cannot know
+    the size of an image until they downloaded it
+    We can therefore tell the browser in advance the size of each image so it knows
+    which one to use
+
+    We thus guide them by specifying the width of the image ('640w' for example)
+
+    Don't be surprised if when shrinking the page, the right image size is not applied
+    This is because the browser choose to keep the high resolution image since
+    it has already downloaded it instead of downloading an additional
+    lower resolution image it uses the higher resolution image since
+    it has been cached already so is available
+  -->
   <div class="large-hero">
-    <img src="assets/images/hero--large.jpg">
-    <h1>Your clarity.</h1>
-    <h2>One trip away.</h2>
-    <p>We create soul restoring journeys that inspire you to be you.</p>
-    <p><a href="#">Get Started Today</a></p>
+    <picture>
+      <source srcset="assets/images/hero--large.jpg 1920w, assets/images/hero--large-hi-dpi.jpg 3840w" media="(min-width: 1380px)" />
+      <source srcset="assets/images/hero--medium.jpg 1380w, assets/images/hero--medium-hi-dpi.jpg 2760w" media="(min-width: 990px)" />
+      <source srcset="assets/images/hero--small.jpg 990w, assets/images/hero--small-hi-dpi.jpg 1980w" media="(min-width: 640px)" />
+      <!-- We always display the smallest image first to follow the mobile first design principle -->
+      <!-- The high dpi images are larger because the screen pixels density is bigger... -->
+      <img class="large-hero__image" srcset="assets/images/hero--smaller.jpg 640w, assets/images/hero--smaller-hi-dpi.jpg 1280w" alt="Costal view of ocean and mountains"/>
+    </picture>
+    <div class="large-hero__text-content">
+      <div class="wrapper">
+        <h1 class="large-hero__title">Your clarity.</h1>
+        <h2 class="large-hero__subtitle">One trip away.</h2>
+        <p class="large-hero__description">We create soul restoring journeys that inspire you to be you.</p>
+        <p><a href="#" class="btn btn--orange btn--large">Get Started Today</a></p>
+      </div>
+    </div>
   </div>
 
-  <div id="our-beginning">
-    <h2>The first trip we planned was our own.</h2>
-    <h3>Ever since, we&rsquo;ve been working to make travel better for everyone.</h3>
-    <img src="assets/images/first-trip.jpg" alt="Couple walking down a street.">
-    <img src="assets/images/our-start.jpg" alt="Our founder, Jane Doe">
-    <h2>Here&rsquo;s how we got started&hellip;</h2>
-    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, <a href="#">quis nostrud exercitation</a> ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-    <p>Duis aute irure dolor in <strong>reprehenderit in</strong> voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-    <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum velit esse cillum <strong>dolore eu fugiat.</strong></p>
+  <div id="our-beginning" class="page-section">
+    <div class="wrapper">
+      
+      <h2 class="headline headline--centered headline--light headline--b-margin-small">The first trip we planned <strong>was our own.</strong></h2>
+      <h3 class="headline headline--centered headline--light headline--orange headline--small headline--narrow headline--b-margin-large">Ever since, we&rsquo;ve been working to make travel <strong>better for everyone.</strong></h3>
+      
+      <div class="wrapper wrapper--medium wrapper--b-margin">
+        <!-- No need for a 'picture' element because we only need to switch resolution,
+        there is not cropping involved, as opposed to the large hero section -->
+        <!-- We can still guide the brower by specifying a 'sizes' attribute to limit
+        the browser to it does not pick an image based on the full widh of the screen, -->
+        <!-- More precisely, what we are doing here is that we are applying the 'sizes'
+        property via a media query only for screen larger than 970px,
+        for smaller screens, the image will need to be 100% of the device width
+        (thus the 'vw' which stands for viewport width)-->
+        <img sizes="(min-width: 970px) 976px, 100vw" srcset="assets/images/first-trip-low-res-i.jpg 565, assets/images/first-trip-i.jpg 976w, assets/images/first-trip-hi-dpi-i.jpg 1952w" alt="Couple walking down a street.">
+      </div>
+
+      <!-- A row is composed of several columns -->
+      <!-- Each row is placed within a div -->
+      <!-- The same, each column is placed within a div -->
+      <!-- Look at the grid-system.png screen shot image
+      to have a better understanding of that particular part -->
+
+      <!-- 'gutters' stand for margins or padding right (for each column) -->
+      <div class="row row--gutters">
+
+        <!-- We start with a class name of row to respect the 'row' block it belongs to -->
+        <!-- Then, we add the number of corresponding columns occupied by the block
+        in a 12 grid system column: so we get 'row__4' for example
+        We added 'medium' here so this organization in column is applied
+        only on desktop screens (via a media query) but on mobiles,
+        there will be only a single element by row
+        -->
+        <!-- 'row__b-margin-until-medium' is applied to add a little margin on mobile view
+        between the image and the text -->
+        <div class="row__medium-4 row__medium-4--larger row__b-margin-until-medium">
+          <picture>
+            <!-- Sometimes, the browser reaches for the largest copy of the image,
+            when the image is responsive,
+            it is because the browser assumes the image should take the entire screen width,
+            this is why we added the 'sizes' attribute so we can guide the browser and
+            tell it what size the image will be rendered at
+            Basically, it's as if we were telling chrome:
+            "listen, this image particular source is never going
+            to be displayed larger than 404 pixels" through our CSS
+            (For info, as before, if you don't see any changes,
+            don't get fooled by the already cached image,
+            moreover, I guess before we did not have that problem because we were only creating
+            images whose width was 100% of the screen size, but here, we only want
+            the image to be one third of the 12 columns) -->
+            <source sizes="404px" srcset="assets/images/our-start-i.jpg 404w, assets/images/our-start-hi-dpi-i.jpg 808w" media="(min-width: 1020px)">
+            <!-- Here, we have 320px which is the actual size of the image -->
+            <source sizes="320px" srcset="assets/images/our-start-portrait-i.jpg 382w, assets/images/our-start-portrait-hi-dpi-i.jpg 764w" media="(min-width: 800px)">
+            <!-- No need for any 'sizes' here, because it has to be a single column layout on mobile devices --> 
+            <img srcset="assets/images/our-start-landscape-i.jpg 800w, assets/images/our-start-landscape-hi-dpi-i.jpg 1600w" alt="Our founder, Jane Doe" />
+          </picture>
+        </div>
+        
+        <div class="row__medium-8 row__medium-8--smaller">
+          <!-- From now, we want to style each 4 of our paragraph,
+          if we follow the BEM way, we would create a class and apply it for  each of our
+          3 paragraphs which is repetitive (what if we would have 10 paragrahs? would we
+          add the class 10 times)
+          Therefore, in that particular case, we will forget about the BEM methodology
+          and wrap the title and the paragrahs within in a new <div> with a class of
+          'generic-content-container'
+          Why not add that class to the already existing 'row__medium-8 row__medium-8--smaller' div?
+          in case we want the rule to be applied only to these paragrahs and not the whole
+          8 columns if we had additional content -->
+          <div class="generic-content-container">
+            <h2 class="headline headline--no-t-margin">Here&rsquo;s how we got started&hellip;</h2>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, <a href="#">quis nostrud exercitation</a> ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+            <p>Duis aute irure dolor in <strong>reprehenderit in</strong> voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+            <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum velit esse cillum <strong>dolore eu fugiat.</strong></p>
+          </div>
+        </div>
+      
+      </div>
+
+    </div>
   </div>
 
-  <div id="features">
-    <img src="assets/images/icons/star.svg">
-    <h2>Our Features</h2>
-  
-    <img src="assets/images/icons/rain.svg">
-    <h3>We&rsquo;ll Watch the Weather</h3>
-    <p>Download our app and we&rsquo;ll send you a notice if it&rsquo;s about to rain in the next 20 minutes around your current location. A good rain can be refreshing, but sometimes you just want to stay dry.</p>
+  <div id="features" class="page-section page-section--blue">
+    <div class="wrapper">
+      <img src="assets/images/icons/star.svg">
+      <h2>Our Features</h2>
 
-    <img src="assets/images/icons/globe.svg">
-    <h3>Global Guides</h3>
-    <p>We&rsquo;ve scoured the entire planet for the best retreats and beautiful vistas. If there&rsquo;s a corner of the world you want to escape to we know the most scenic and inspiring locations.</p>
+      <img src="assets/images/icons/rain.svg">
+      <h3>We&rsquo;ll Watch the Weather</h3>
+      <p>Download our app and we&rsquo;ll send you a notice if it&rsquo;s about to rain in the next 20 minutes around your current location. A good rain can be refreshing, but sometimes you just want to stay dry.</p>
 
-    <img src="assets/images/icons/wifi.svg">
-    <h3>Wi-Fi Waypoints</h3>
-    <p>We only send you on trips to places we can personally vouch for as being amazing. Which means we&rsquo;ve mapped out where local wi-fi spots are and marked them in our app&rsquo;s map view.</p>
+      <img src="assets/images/icons/globe.svg">
+      <h3>Global Guides</h3>
+      <p>We&rsquo;ve scoured the entire planet for the best retreats and beautiful vistas. If there&rsquo;s a corner of the world you want to escape to we know the most scenic and inspiring locations.</p>
 
-    <img src="assets/images/icons/fire.svg">
-    <h3>Survival Kit</h3>
-    <p>Everytime you book an escape with us we send you a survival kit with the finest materials. The kit will allow you to setup a tent, start a fire, scratch your own back and lower your taxes.</p>
+      <img src="assets/images/icons/wifi.svg">
+      <h3>Wi-Fi Waypoints</h3>
+      <p>We only send you on trips to places we can personally vouch for as being amazing. Which means we&rsquo;ve mapped out where local wi-fi spots are and marked them in our app&rsquo;s map view.</p>
+
+      <img src="assets/images/icons/fire.svg">
+      <h3>Survival Kit</h3>
+      <p>Everytime you book an escape with us we send you a survival kit with the finest materials. The kit will allow you to setup a tent, start a fire, scratch your own back and lower your taxes.</p>
+    </div>
   </div>
 
   <div id="testimonials">
@@ -81,7 +198,7 @@
   </div>
 
   <footer>
-    <p>Copyright &copy; 2016 Clear View Escapes. All rights reserved. <a href="#">Get in Touch</a></p>
+    <p>Copyright &copy; 2016 Clear View Escapes. All rights reserved. <a href="#" class="btn btn--orange">Get in Touch</a></p>
   </footer>
 </body>
 </html>

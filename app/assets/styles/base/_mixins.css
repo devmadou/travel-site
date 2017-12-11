@@ -1,0 +1,33 @@
+@define-mixin atSmall{
+  /*
+  A mixin is just a reusable bit of code
+  Inside that mixin, we just say what the mixin should do
+  Here, the mixin creates a media query for screen larger than 530px
+  */
+  @media (min-width: 530px){
+    @mixin-content;
+  }
+}
+
+@define-mixin atMedium{
+  @media (min-width: 800px){
+    @mixin-content;
+  }
+}
+
+@define-mixin atLarge{
+  @media (min-width: 1200px){
+    @mixin-content;
+  }
+}
+
+/*
+This mixin is used to clear any floating element (text, image, ...)
+*/
+@define-mixin clearFix{
+  &::after{
+    content: "";
+    clear: both;
+    display: table;     /* For browser support */
+  }
+}

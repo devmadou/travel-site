@@ -1,0 +1,26 @@
+/*
+We gave the main '.btn' element the display 'inline-block' because we gave it padding
+That way, its parent and surrounding elements will be aware of its vertical padding
+*/
+.btn{
+  background-color: $mainBlue;
+  color: #FFF;
+  text-decoration: none;
+  padding: .75rem 1.2rem;
+  display: inline-block;
+
+  &--orange{
+    background-color: $mainOrange;
+  }
+
+  &--large{
+    /* We do not specify any font-size so it will default to 1 for tiny screens*/
+    padding: 1.1rem 1.9rem;
+
+    @mixin atSmall{
+      font-size: 1.25rem;
+    }
+    
+  }
+  
+}

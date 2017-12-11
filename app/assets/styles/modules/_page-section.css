@@ -1,0 +1,18 @@
+/*
+This class will have the responsability of adding top padding
+and bottom padding to each section of the page
+This is a design pattern that will be resused for several sections
+(same as the 'wrapper' section)
+*/
+
+.page-section{
+    padding: 1.2rem 0;      /* For mobile desktop size */
+    @mixin atMedium{
+        padding: 4.5rem 0;
+    }
+
+    &--blue{
+        background-color: $mainBlue;
+        color: #FFF;
+    }
+}

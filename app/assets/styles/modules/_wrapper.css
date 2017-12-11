@@ -1,0 +1,49 @@
+/*
+This file is designed to create padding on each side of the element it is applied to
+The main idea is that instead of applying padding to a single element individually,
+we use that .wrapper class that will be in charge of centralizing the CSS code
+used for applying padding to ANY element (whole page or single item) of the page
+
+On top of adding padding on the left and right side of the screen,
+that wrapper class will also take care of limiting the maximum width
+so we avoid having very long lines of text to read on larger screen
+
+It also centers the content via margin-left and margin right set to auto
+*/
+.wrapper{
+    padding-left: 18px;
+    padding-right: 18px;
+    /*The 'max-width' is applied so we avoid reading very long lines on the screen
+    To take the padding from right and left into account so the image breathes better,
+    by the way, the author used 1236px (so it takes the 2 times 18px padding added,
+    no really useful I think...),
+    as I have a smaller screen I will use a lower value instead
+    */
+    max-width: 1100px;
+    margin-left: auto;
+    margin-right: auto;
+
+    overflow: hidden;   /* So we hide the negative -65px margin added to the right */
+
+    &--medium{
+        /* We make it a bit narrower, (decrease the width) */
+        max-width: 976px;
+    }
+
+    .wrapper{
+        /*
+        We target every wrapper inside another wrapper
+        The targeted elements should no longer have horizontal padding
+        So it takes the whole sreen's width on mobile device
+        */
+        padding-left: 0;
+        padding-right: 0;
+    }
+
+    &--b-margin{
+        margin-bottom: 1rem;
+        @mixin atSmall{
+            margin-bottom: 3.875rem;
+        }
+    }
+}

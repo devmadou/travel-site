@@ -1,0 +1,24 @@
+body{
+  font-family: 'Roboto', sans-serif;
+  color: #333;
+}
+
+/*
+So we don't get images too large that extend the width of the screen device
+*/
+img{
+  max-width: 100%;
+  height: auto;
+}
+
+*{
+  box-sizing: border-box;
+}
+
+/*
+Let's be honest, the default blue color is just crap!
+Let's give all our links a cool color of orange :)
+*/
+a{
+  color: $mainOrange;
+}
