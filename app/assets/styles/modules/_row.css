@@ -11,6 +11,14 @@
 
     @mixin atMedium{
 
+        &--gutters{
+            /*
+            This negative margin applied removes the final gutter of 65px at the end
+            of the last column
+             */
+            margin-right: -65px;
+        }
+
         /*
         Gutters here stands for padding
         '> div' selects all direct childrens that use a tag of div which means
@@ -34,11 +42,12 @@
             */
         }
 
-        &--gutters{
-            /*
-            This negative margin applied removes the final gutter of 65px at the end
-             */
-            margin-right: -65px;
+        &--gutters-large{
+            margin-right: -100px;
+        }
+
+        &--gutters-large > div{
+            padding-right: 100px;
         }
 
         &__b-margin-until-medium{
@@ -74,6 +83,10 @@
 
         }
 
+        &__medium-6{
+            float: left;
+            width: 50%;
+        }
     }
 
 }

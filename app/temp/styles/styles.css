@@ -874,6 +874,14 @@ This is a design pattern that will be resused for several sections
         /* The image takes 2 third of the page */
 
 }
+
+        .row--gutters{
+            /*
+            This negative margin applied removes the final gutter of 65px at the end
+            of the last column
+             */
+            margin-right: -65px;
+        }
         .row--gutters > div {
             /*
             Padding right is useful to create a spacing between each row of the simulated 12 grid
@@ -892,11 +900,12 @@ This is a design pattern that will be resused for several sections
             */
         }
 
-        .row--gutters{
-            /*
-            This negative margin applied removes the final gutter of 65px at the end
-             */
-            margin-right: -65px;
+        .row--gutters-large{
+            margin-right: -100px;
+        }
+
+        .row--gutters-large > div{
+            padding-right: 100px;
         }
 
         .row__b-margin-until-medium{
@@ -927,6 +936,11 @@ This is a design pattern that will be resused for several sections
             .row____medium-8--smaller{
                 width: 63%;  /* Because on the design, the text looks a little smaller */
             }
+
+        .row__medium-6{
+            float: left;
+            width: 50%;
+        }
   }
 
 /*
@@ -937,7 +951,7 @@ This is a design pattern that will be resused for several sections
         /* There is more space between each line, actually, this property does not require any
         measurement unit like rem, em, px, ... */
         line-height: 1.65;
-        margin: 1.8rem 0;
+        margin: 0 0 1.8rem 0;
         font-size: 0.9rem;
     }
 
@@ -964,3 +978,115 @@ This is a design pattern that will be resused for several sections
         /* By default, the font-weight is 100 */
         font-weight: 700;
     }
+
+.section-title{
+    /* Not the whole title should be bold so we lower the font weight a little */
+    font-size: 2.4rem;
+    font-weight: 300;
+    text-align: center;
+}
+
+/*
+  A mixin is just a reusable bit of code
+  Inside that mixin, we just say what the mixin should do
+  Here, the mixin creates a media query for screen larger than 530px
+  */
+
+@media (min-width: 530px){
+
+.section-title{
+        font-size: 3.75rem
+}
+  }
+
+.section-title strong{
+        font-weight: 500;
+    }
+
+.section-title__icon{
+        /* 'block' will drop the text to a new line */
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        margin-bottom: .6rem;
+    }
+
+/*
+  A mixin is just a reusable bit of code
+  Inside that mixin, we just say what the mixin should do
+  Here, the mixin creates a media query for screen larger than 530px
+  */
+
+@media (min-width: 530px){
+
+.section-title__icon{
+            /* On larger screen, the text will sit next to the image */
+            display: inline-block;
+            margin-right: .5rem
+    }
+  }
+
+.feature-item{
+    position: relative;
+    padding-bottom: 2.5rem;
+}
+
+/*
+  A mixin is just a reusable bit of code
+  Inside that mixin, we just say what the mixin should do
+  Here, the mixin creates a media query for screen larger than 530px
+  */
+
+@media (min-width: 530px){
+
+.feature-item{
+        padding-left: 94px
+}
+  }
+
+/*
+    We want the icon to be positionned in relation to its parent
+    so we give the parent a position of 'relative' and the icon
+    a position of 'absolute'
+    */
+
+.feature-item__icon{
+        display: block;
+        margin: 0 auto;
+    }
+
+/*
+  A mixin is just a reusable bit of code
+  Inside that mixin, we just say what the mixin should do
+  Here, the mixin creates a media query for screen larger than 530px
+  */
+
+@media (min-width: 530px){
+
+.feature-item__icon{
+            position: absolute;
+            left: 0
+    }
+  }
+
+.feature-item__title{
+        font-weight: 300;
+        margin-top: .7rem;
+        margin-bottom: .8rem;
+        text-align: center;
+    }
+
+/*
+  A mixin is just a reusable bit of code
+  Inside that mixin, we just say what the mixin should do
+  Here, the mixin creates a media query for screen larger than 530px
+  */
+
+@media (min-width: 530px){
+
+.feature-item__title{
+            font-size: 1.875rem;
+            margin-top: 1rem;
+            text-align: left
+    }
+  }

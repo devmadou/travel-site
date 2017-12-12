@@ -1,0 +1,26 @@
+.section-title{
+    /* Not the whole title should be bold so we lower the font weight a little */
+    font-size: 2.4rem;
+    font-weight: 300;
+    text-align: center;
+    @mixin atSmall{
+        font-size: 3.75rem;
+    }
+
+    strong{
+        font-weight: 500;
+    }
+
+    &__icon{
+        /* 'block' will drop the text to a new line */
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        margin-bottom: .6rem;
+        @mixin atSmall{
+            /* On larger screen, the text will sit next to the image */
+            display: inline-block;
+            margin-right: .5rem;
+        }
+    }
+}

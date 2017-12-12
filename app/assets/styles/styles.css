@@ -30,4 +30,6 @@ You can see a tiny margin appearing on each side of the site when applying it
 @import "modules/_page-section";
 @import "modules/_headline";
 @import "modules/_row";
-@import "modules/_generic-content-container"
+@import "modules/_generic-content-container";
+@import "modules/_section-title";
+@import "modules/_feature_item";

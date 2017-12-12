@@ -7,7 +7,7 @@
         /* There is more space between each line, actually, this property does not require any
         measurement unit like rem, em, px, ... */
         line-height: 1.65;
-        margin: 1.8rem 0;
+        margin: 0 0 1.8rem 0;
         font-size: 0.9rem;
         @mixin atSmall{
             font-size: 1rem;    /* The author applied 1.125rem which is too much for me... */

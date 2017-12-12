@@ -1,0 +1,35 @@
+.feature-item{
+    position: relative;
+    padding-bottom: 2.5rem;
+    @mixin atSmall{
+        padding-left: 94px;
+    }
+
+    /*
+    We want the icon to be positionned in relation to its parent
+    so we give the parent a position of 'relative' and the icon
+    a position of 'absolute'
+    */
+    &__icon{
+        display: block;
+        margin: 0 auto;
+
+        @mixin atSmall{
+            position: absolute;
+            left: 0;
+        }
+    }
+
+    &__title{
+        font-weight: 300;
+        margin-top: .7rem;
+        margin-bottom: .8rem;
+        text-align: center;
+
+        @mixin atSmall{
+            font-size: 1.875rem;
+            margin-top: 1rem;
+            text-align: left;
+        }
+    }
+}
