@@ -1,0 +1,64 @@
+.testimonial{
+
+    &--last{
+        margin-bottom: 0;
+    }
+    /*
+    The background color is a bit transparent
+    (by the way, the 'a' in 'rgba' stands for alpha transparency)
+    */
+    background-color: rgba(255, 255, 255, .8);
+    padding: 0 18px 1px 18px;
+    margin-bottom: 98px;
+    /*
+    Why the 1px padding on the bottom of the testimonial section?
+    This is because the paragrah contained within a testimonial block has by default
+    - a margin-top
+    - a margin-bottom
+    If we remove that padding, the margin-bottom disappears or in reality
+    creates an overlap that goes beyond the white testimonial block and is thus unseen
+    so we add some padding to the testimonial so the paragrah has something to push through
+    */
+
+    @mixin atLarge{
+        margin-bottom: 0;
+        padding: 0 1.8125rem 1px 1.8125rem;
+    }
+
+    &__photo{
+        border-radius: 80px;
+        /*
+        'overflow' is hiddent because we only see the left corners of the image getting rounded
+        hiding the overflow crop the div to its exact content so we get to see the right hand corners
+        */
+        overflow: hidden;
+        width: 160px;
+        height: 160px;
+        margin: 0 auto -80px auto;
+        position: relative;
+        /*
+        We want the circle photo to violate the top div border
+        but the titles and paragrah within the testimonial section will not move up
+        that is why we add a negative '-80px' margin at the bottom of the image
+        */
+        top: -80px;
+        border: 6px solid rgba(255, 255, 255, .8);
+    }
+
+    &__title{
+        color: $mainBlue;
+        text-align: center;
+        font-size: 1.5rem;
+        font-weight: 500;
+        margin: 0;
+    }
+
+    &__subtitle{
+        color: $mainOrange;
+        text-align: center;
+        font-weight: 400;
+        font-size: 0.9375rem;
+        margin: .25rem 0 1rem 0;
+    }
+
+}

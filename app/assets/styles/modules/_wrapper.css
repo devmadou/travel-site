@@ -25,6 +25,24 @@ It also centers the content via margin-left and margin right set to auto
 
     overflow: hidden;   /* So we hide the negative -65px margin added to the right */
 
+    &--no-padding-until-medium{
+        padding-left: 0;
+        padding-right: 0;
+        @mixin atMedium{
+            padding-left: 18px;
+            padding-right: 18px;
+        }
+    }
+
+    &--no-padding-until-large{
+        padding-left: 0;
+        padding-right: 0;
+        @mixin atLarge{
+            padding-left: 18px;
+            padding-right: 18px;
+        }
+    }
+
     &--medium{
         /* We make it a bit narrower, (decrease the width) */
         max-width: 976px;
