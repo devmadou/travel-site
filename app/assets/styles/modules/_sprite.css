@@ -1,0 +1,235 @@
+/*
+The gulp svg sprites package uses the mustache template system
+meaning any code included within double braces
+                
+                ' ACTUAL CODE  ACTUAL CODE  ACTUAL CODE  ACTUAL CODE  ACTUAL CODE  ACTUAL CODE  ACTUAL CODE  ACTUAL CODE  ACTUAL CODE  ACTUAL CODE  ACTUAL CODE  ACTUAL CODE '
+
+will be looped through for each icon
+
+(I guess here, 'shapes' is the special keyword used by svg sprites to reference
+all shapes and iterate through them here...)
+
+Note that in that file, we will use several variables that seem to come from nowhere
+They actually come from the gulp svg sprite package!!
+All the info on these variables are at the official GitHub documentation:
+https://github.com/jkphl/svg-sprite/blob/master/docs/templating.md
+
+The final processed file (after decoding this file's content) is at:
+'./app/temp/sprite/css/sprite.css'
+*/
+
+
+        /*
+        First, the code put between 
+                ' ACTUAL CODE '
+        will only be repeated for the first item of the sequence
+
+        This creates a base 'icon' class that has a 'background-image' attribute
+        so that this exact same background image corresponding to the same sprite file
+        is not repeated over and over so we avoid having for each icons
+        something like that:
+        icon--star{
+            ...
+            background-image: url('xyz.svg');
+        }
+        icon--clear-view-escapes{
+            ...
+            background-image: url('xyz.svg');
+        }
+        Instead, we will have:
+        .icon
+        {
+           background-image: url('xyz.svg'); 
+        }
+        then:
+        .icon--star{
+            ...
+        }
+        .icon--clear-view-escapes{
+            ...
+        }
+
+        We just provide a URL path that points to the svg sprite file
+        The 'sprite' variable is responsible for going into the svg folder
+        and selecting the sprite file
+
+        The reason we used a variable instead of a hardcoded path is
+        because svg sprites tends to add a bunch of randomly generated characters
+        to the 'sprite.css' like that: 'sprite.css-69f19c2e.svg'
+        everytime a new sprite is generated
+
+        Notice that we used TRIPLE braces, this is because the path contains
+        forward slashes and forward slashes are escaped when whitin double braces
+        As we do not want them to be escaped, we use TRIPLE slashes to specify the
+        variable containing slashes to be as it is
+        */
+        .icon{
+            background-image: url('/assets/images/sprites/svg/sprite-69f19c2e.svg');
+        }
+    /*
+    We create a new CSS rule here i guess, one per icon (since we loop)
+    Each icon has its name, height and width specified automatically
+    */
+    .icon--clear-view-escapes {
+        width: 142.4px;
+        height: 59.53px;
+        /*
+        That 'background-position' is here to tell each icon its own unique
+        X and Y coordinates on the sprite file
+        */
+        background-position: 0 0;
+    }
+
+    /*
+    We create a new CSS rule here i guess, one per icon (since we loop)
+    Each icon has its name, height and width specified automatically
+    */
+    .icon--comment {
+        width: 64px;
+        height: 64px;
+        /*
+        That 'background-position' is here to tell each icon its own unique
+        X and Y coordinates on the sprite file
+        */
+        background-position: 99.70443349753694% 0;
+    }
+
+    /*
+    We create a new CSS rule here i guess, one per icon (since we loop)
+    Each icon has its name, height and width specified automatically
+    */
+    .icon--facebook {
+        width: 21.23px;
+        height: 42.01px;
+        /*
+        That 'background-position' is here to tell each icon its own unique
+        X and Y coordinates on the sprite file
+        */
+        background-position: 26.040607071652357% 45.795830448496034%;
+    }
+
+    /*
+    We create a new CSS rule here i guess, one per icon (since we loop)
+    Each icon has its name, height and width specified automatically
+    */
+    .icon--fire {
+        width: 56px;
+        height: 64px;
+        /*
+        That 'background-position' is here to tell each icon its own unique
+        X and Y coordinates on the sprite file
+        */
+        background-position: 0 99.56481481481481%;
+    }
+
+    /*
+    We create a new CSS rule here i guess, one per icon (since we loop)
+    Each icon has its name, height and width specified automatically
+    */
+    .icon--globe {
+        width: 64px;
+        height: 64px;
+        /*
+        That 'background-position' is here to tell each icon its own unique
+        X and Y coordinates on the sprite file
+        */
+        background-position: 27.586206896551722% 99.56481481481481%;
+    }
+
+    /*
+    We create a new CSS rule here i guess, one per icon (since we loop)
+    Each icon has its name, height and width specified automatically
+    */
+    .icon--instagram {
+        width: 42.01px;
+        height: 42.01px;
+        /*
+        That 'background-position' is here to tell each icon its own unique
+        X and Y coordinates on the sprite file
+        */
+        background-position: 63.2917018534157% 49.234556504346486%;
+    }
+
+    /*
+    We create a new CSS rule here i guess, one per icon (since we loop)
+    Each icon has its name, height and width specified automatically
+    */
+    .icon--mail {
+        width: 64px;
+        height: 48px;
+        /*
+        That 'background-position' is here to tell each icon its own unique
+        X and Y coordinates on the sprite file
+        */
+        background-position: 0 48.00806451612903%;
+    }
+
+    /*
+    We create a new CSS rule here i guess, one per icon (since we loop)
+    Each icon has its name, height and width specified automatically
+    */
+    .icon--rain {
+        width: 64px;
+        height: 64px;
+        /*
+        That 'background-position' is here to tell each icon its own unique
+        X and Y coordinates on the sprite file
+        */
+        background-position: 99.70443349753694% 59.25925925925926%;
+    }
+
+    /*
+    We create a new CSS rule here i guess, one per icon (since we loop)
+    Each icon has its name, height and width specified automatically
+    */
+    .icon--star {
+        width: 64px;
+        height: 64px;
+        /*
+        That 'background-position' is here to tell each icon its own unique
+        X and Y coordinates on the sprite file
+        */
+        background-position: 59.11330049261084% 99.56481481481481%;
+    }
+
+    /*
+    We create a new CSS rule here i guess, one per icon (since we loop)
+    Each icon has its name, height and width specified automatically
+    */
+    .icon--twitter {
+        width: 51.78px;
+        height: 42.06px;
+        /*
+        That 'background-position' is here to tell each icon its own unique
+        X and Y coordinates on the sprite file
+        */
+        background-position: 94.04330452560171% 98.50700323226104%;
+    }
+
+    /*
+    We create a new CSS rule here i guess, one per icon (since we loop)
+    Each icon has its name, height and width specified automatically
+    */
+    .icon--wifi {
+        width: 60px;
+        height: 64px;
+        /*
+        That 'background-position' is here to tell each icon its own unique
+        X and Y coordinates on the sprite file
+        */
+        background-position: 68.79227053140097% 0;
+    }
+
+    /*
+    We create a new CSS rule here i guess, one per icon (since we loop)
+    Each icon has its name, height and width specified automatically
+    */
+    .icon--youtube {
+        width: 34.75px;
+        height: 42px;
+        /*
+        That 'background-position' is here to tell each icon its own unique
+        X and Y coordinates on the sprite file
+        */
+        background-position: 36.69752421959096% 45.792307692307695%;
+    }
