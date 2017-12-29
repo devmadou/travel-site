@@ -8,7 +8,7 @@ On top of adding padding on the left and right side of the screen,
 that wrapper class will also take care of limiting the maximum width
 so we avoid having very long lines of text to read on larger screen
 
-It also centers the content via margin-left and margin right set to auto
+It also centers the content via margin-left and margin-right set to auto
 */
 .wrapper{
     padding-left: 18px;

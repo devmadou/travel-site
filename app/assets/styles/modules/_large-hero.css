@@ -58,13 +58,17 @@ so it adapts automatically whatever the screen size
   }
 
   &__text-content{
+    padding-top: 88px;  /* Careful, this top padding is the exact same width as the 'CLEAR VIEW ESCAPES' site logo in the header so the content is still centered */
     position: absolute;
     left: 0;
+    top: 50%;
     /* width and text-align just to center the text horizontally */
     width: 100%;
     text-align: center;
-    top: 50%;
     transform: translateY(-50%);  /* Translate if to half of its own height, a negative value pulls it up */
+    @mixin atMedium{
+      padding-top: 88px;  /* Careful, this top padding is the exact same width as the BACKGROUND TRANSPARENT HEIGHT logo in the header so the content is still centered */
+    }
   }
 
   &__title{

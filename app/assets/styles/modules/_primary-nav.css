@@ -1,0 +1,71 @@
+.primary-nav{
+    /*
+    The 'padding-top' is here to add some spacing between the Get in Touch button
+    and the 3 nav links on mobile screens
+    */
+    padding-top: 10px;
+    @mixin atMedium{
+        padding-top: 0;
+    }
+
+    &--pull-right{
+        @mixin atMedium{
+            float: right;
+        }
+    }
+
+    /*
+    We target any unordered list that lives within the 'primary-nav' section
+    No need for BEM classes, that would be tedious to have block element classes
+    for <ul>, <li> and <a> elements
+    */
+    ul{
+        margin: 0;
+        padding: 0;
+        @mixin clearFix;
+    }
+
+    /*
+    The clearFix is used on the parent element
+    */
+    li{
+        list-style: none;   /* No bullets for list items */
+        padding-right: 7px;
+        display: inline-block;  /* I added it because float: left does not do the desired effect */
+                                /* Plus the author says it horizontally center content... */
+        @mixin atMedium{
+            padding-right: 20px;
+            float: left;    /* float left will cause each item to float on one line */
+            display: block;
+        }
+    }
+
+    /*
+    To save some spaces on mobile devices, we ommit the padding-right
+    of the last <li> element so all 3 links 'Our Beginning Features Testimonials'
+    fits into only one line even if the screen size is small
+    On desktop screen, we can keep it
+    */
+    li:last-child{
+        padding-right: 0;
+        @mixin atMedium{
+            padding-right: 20px;
+        }
+    }
+
+    a{
+        color: #FFF;
+        text-decoration: none;  /* No underline for links */
+        font-weight: 300;
+        display: block;
+        padding: 5px 8px;
+        font-size: .8rem;
+        background-color: rgba($mainBlue, .5);
+        @mixin atMedium{
+            font-size: 1rem;
+            padding: 12px 0;
+            background-color: transparent;
+        }
+    }
+
+}

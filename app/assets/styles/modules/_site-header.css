@@ -1,0 +1,271 @@
+.site-header{
+    /*
+    We want the header to overlap on the main background image
+    Thus, a positon of 'absolute' will take it out of its normal form
+    z-index is here to make the header sit on top of the image
+    (higher z-index is on top)
+    
+    For the color, we used the rgba notation with the hexadecimal code
+    which is not common but still possible thanks to the NPM
+    'postcss-hexrgba' package (do not forget to incorporate that package
+    and add it to the array when piping on the 'styles.js' task)
+
+    We also adjust the width since we want the header bar
+    to take the whole available width.
+    When an element is position absolute, it only takes the width
+    corresponding to its content
+    */
+    position: absolute;
+    padding: 10px 0;
+    width: 100%;
+    z-index: 2;
+    /*
+    We want the navigation menu background to fade into view gradually
+    So we apply a transition to the desired property which is 'background-color'
+    We selected the 'ease-out' transition which is nice in that case
+    */
+    transition: background-color .3s ease-out;
+    @mixin atMedium{
+        background-color: rgba($mainBlue, .3);
+    }
+
+    &--is-expanded{
+        background-color: rgba($mainBlue, .55);
+    }
+
+
+    &__btn-container{
+        /*
+        The button has to be on the right side
+        */
+        @mixin atMedium{
+            float: right;
+        }
+    }
+
+    /*
+    We wanted to take the 'Clear View Escapes' logo out of the flow of the page
+    which maximum height is determined by the links and the 'Get in Touch' button
+    */
+    &__logo{
+        position: absolute;
+        background-color: $mainBlue;
+        padding: 25px 36px;
+        top: 0;
+        /*
+        This will center the logo on mobile devices
+        */
+        left: 50%;
+        transform: translateX(-50%) scale(.8);
+        /*
+        The scale is here to decrease the logo's size but it will shrink it
+        by reference to the center of the image so margin can appear on each side
+        of the image
+        This is because by default, the 'transform-origin' property was 50% 50%
+        We will customize it here, so it shrinks according to the top
+        center point of origin
+        */
+        transform-origin: 50% 0%;
+        @mixin atMedium{
+            /*
+            Then, we need to undo both of these translation and centering properties
+            on larger screens
+            */
+            left: auto;
+            transform: translateX(0);
+        }
+
+    }
+
+    &__logo__graphic{
+        /*
+        If i remember, it is just here to hide the actual text of the div
+        containing our SVG logo image...
+        */
+        text-indent: -9999px;
+    }
+
+    &__menu-content{
+        /*
+        We replaced the display: block; with opacity set to 0
+        This way the content will still be hidden initially
+        but when the modifier class --is-expanded is added,
+        we can gradually fade to an opacity of 1
+
+        Even if hidden with an opacity of 0, the user can still click the
+        menu and we want to avoid users to be able to click on invisible items
+        this is why we added that z-index negative property
+        (By the way, using 'z-index' implies setting the position to 'relative')
+
+        In 'transition: all .3s ease-out', 'all' stands for transition
+        every property of the element (since we are changing opacity, z-index, ...)
+        */
+        opacity: 0;
+        transition: all .3s ease-out;
+        position: relative;
+        z-index: -10;
+        transform: scale(1.2);  /* We want to zoom in a little bit */
+        padding-top: 90px;
+        text-align: center;
+        @mixin atMedium{
+            opacity: 1;     /* Same as before, instead of display block */
+            z-index: 1;     /* So it becomes visible then for larger screens */
+            padding-top: 0;
+            transform: scale(1);
+        }
+
+        &--is-visible{
+            opacity: 1;
+            z-index: 1;
+            transform: scale(1);
+        }
+    }
+
+    /*
+    We create a little white square that will serve as menu opener on smaller screens
+    
+    We now we wanted a square (20px by 20px) but we used 19px for the heigh because
+    of the resulting hamburger icon where for a weird reason, we had more
+    spacing between the middle and the bottom line (1px actually) compared to
+    the spacing between the top and the middle bar
+
+    Actually, we created that 3 bars effect based on the 'menu_icon__middle' element
+    then we use sudo elements: via 'before' and 'after' and apply
+    pretty similar styles
+    To summarize, the hamburger menu sicon is created by
+    - middle
+    - ::before
+    - ::after
+    */
+    &__menu-icon{
+        width: 20px;
+        height: 20px;
+        /* We remove the background (square) white color because
+        we want a hamburger styled icon */
+        /* background-color: #FFF;*/
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        /*
+        This big 'z-index' is here so the icon has priority and sits always on top
+        of the actual menu-content because if we toggle the button and the menu
+        opens, the menu will sit on top of the button and we will not be able
+        to close it
+        */
+        z-index: 10;
+        @mixin atMedium{
+            /*
+            Large screens won't see the icon at all
+            */
+            display: none;
+        }
+
+        /*
+        This code represents the hamburger bars styling of the menu icon
+        on smaller screens
+        */
+        &::before{
+            /* The 'content' property is here so we ensure the bar is displayed */
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 20px;
+            height: 3px;
+            background-color: #FFF;
+            /*
+            We set the bottom left corner to be the transform origin instead
+            of the default 50% 50% which is the middle of the bar
+            This way, we will have the nice appropriate effect when clicking
+            the icon (we want the whole icon to become a cross)
+            */
+            transform-origin: 0 0;
+            /*
+            The 'transition' is here to animate the rotation
+            Note that on the top bar, we choose to transition our top bar
+            'transform' property
+            */
+            transition: transform .3s ease-out;
+        }
+
+        &__middle{
+            position: absolute;
+            top: 8px;
+            left: 0;
+            width: 20px;
+            height: 3px;
+            background-color: #FFF;
+            /*
+            The 'transition' is here to animate the rotation
+            Note that on the middle bar, we choose to transition our top bar
+            'opacity' property, (actually, the auther changed it to 'all'
+            so it transitions all properties)
+            */
+            transition: all .3s ease-out;
+            /*
+            That effect is very subtle (no problem if you don't get it)
+            Here, the author changes the 'transform-origin' for the middle bar
+            so when it dissapears, the middle hamburger bar shrinks
+            from the right to the left
+            Because by default, the transform-origin is set to 50% 50%
+            so when the opacity goes null, the element dissapears progressively
+            by shrinking from both right and left as if is was burning
+            */
+            transform-origin: 0 50%;
+        }
+
+        &::after{
+            content: "";
+            position: absolute;
+            left: 0;
+            bottom: 1px;
+            width: 20px;
+            height: 3px;
+            background-color: #FFF;
+            transform-origin: 0 100%;
+            /*
+            The 'transition' is here to animate the rotation
+            Note that on the bottom bar, we choose to transition our top bar
+            'transform' property
+            */
+            transition: transform .3s ease-out;
+        }
+
+        /*
+        We modify the hamburger horizontal bars so it becomes progessively an X
+        */
+        &--close-x{
+            /*
+            We target the top horizontal bar here
+            We will rotate the bar 45deg clockwise
+            The 'scale' is here because even after diagonal rotation,
+            the rotated top bar seems too short
+            */
+            &::before{
+                transform: rotate(45deg) scale(1.25);
+            }
+
+            /*
+            We used the good old way of selecting elements with the dot '.'
+            for simplicity
+            Moreover, 'transform: scaleX(0)' is here to shrink the middle bar
+            when we click the hamburger icon to open the menu
+            */
+            .site-header__menu-icon__middle{
+                opacity: 0;
+                transform: scaleX(0);
+            }
+
+            /*
+            After that, we need to rotate the bottom bar counter clock wise
+            this time
+            The 'translateY' is called here become the rotated bottom bar seems
+            one pixel higher than the rotated top bar
+            */
+            &::after{
+                transform: rotate(-45deg) scale(1.25) translateY(1px);
+            }
+        }
+    }
+
+}

@@ -66,6 +66,13 @@ gulp.task('watch', function(){
     gulp.start('cssInject');
   });
 
+  /*
+  We can watch changes for any of our JavaScript files too
+  */
+  watch('./app/assets/scripts/**/*.js', function(){
+    gulp.start('scriptsRefresh');
+  });
+
 });
 
 /*
@@ -78,4 +85,13 @@ instead of having to refresh the page
 gulp.task('cssInject', ['styles'], function(){
   return gulp.src('./app/temp/styles/styles.css')
           .pipe(browserSync.stream());
+});
+
+/*
+We also want browserSync to reload the page when the changes on our JS
+have loaded and been applied
+*/
+
+gulp.task('scriptsRefresh', ['scripts'], function(){
+  browserSync.reload();
 });

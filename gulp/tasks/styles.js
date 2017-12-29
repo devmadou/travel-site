@@ -5,7 +5,8 @@ autoprefixer = require('autoprefixer'),
 cssvars = require('postcss-simple-vars'),
 nested = require('postcss-nested'),
 cssImport = require('postcss-import');
-mixins = require('postcss-mixins');
+mixins = require('postcss-mixins'),
+hexrgba = require('postcss-hexrgba');
 
 /*
 **************************
@@ -75,7 +76,7 @@ gulp.task('styles', function(){
   We return a value because a gulp.src() is an asynchronous function
   So gulp is aware when the function completes
   */
-  return gulp.src('./app/assets/styles/styles.css')
+  
   /*
   We need to tell postcss what to do by specifying an array of features to use:
   We tell it here to use:
@@ -87,7 +88,8 @@ gulp.task('styles', function(){
   Indeed, we start by cssImport so the imports are replaced
   with their actual file content
   */  
-          .pipe(postcss([cssImport, mixins, cssvars, nested, autoprefixer]))
+  return gulp.src('./app/assets/styles/styles.css')
+          .pipe(postcss([cssImport, mixins, cssvars, nested, hexrgba, autoprefixer]))
           .on('error', function(errorInfo){
             /*
             Log the info in a more digestable way via the toString() method

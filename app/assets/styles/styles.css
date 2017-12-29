@@ -1,20 +1,15 @@
 /*
 Only contains the imports
-*/
 
-/*
 Beginning a file with an underscore tells the developers to consider this file
 a PARTIAL file not designed to be used on its own
 It is intended to be imported
-*/
 
-/*
 We can even import CSS packages installed with node like 'normalize.css'
 the same way we would import classic CSS files (like the other imports)
-*/
 
-/*
 normalize:
+----------
 normalize.css is an alternative to CSS Reset
 It adjusts the styles of certain elements in an effort to make all web browsers
 render things more consistently
@@ -36,3 +31,5 @@ You can see a tiny margin appearing on each side of the site when applying it
 @import "modules/_testimonial";
 @import "modules/_sprite";
 @import "modules/_site-footer";
+@import "modules/_site-header";
+@import "modules/_primary-nav";

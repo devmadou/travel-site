@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html>
+
 <head>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <link href='https://fonts.googleapis.com/css?family=Roboto:400,100,300,500,700' rel='stylesheet' type='text/css'>
@@ -8,17 +9,48 @@
   <meta name="description" content="Your clarity. One trip away. We create soul restoring journeys that inspire you to be you.">
   <link rel="stylesheet" href="temp/styles/styles.css">
 </head>
+
 <body>
-  <header>
-    <img src="assets/images/icons/clear-view-escapes.svg">
-    <a href="#" class="btn">Get in Touch</a>
-    <nav>
-      <ul>
-        <li><a href="#our-beginning">Our Beginning</a></li>
-        <li><a href="#features">Features</a></li>
-        <li><a href="#testimonials">Testimonials</a></li>
-      </ul>
-    </nav>
+
+  <header class="site-header">
+    <div class="wrapper">
+      <div class="site-header__logo">
+        <!-- We kept the text here just for search engine reason,
+        since the logo is just the name of the company,
+        without to render it visually -->
+        <div class="site-header__logo__graphic icon icon--clear-view-escapes">Clear View Escapes</div>
+      </div>
+      <!-- That div is here to host the little square menu icon on smaller screens -->
+      <div class="site-header__menu-icon">
+        <!-- Our menu icon should have 3 horizontal bars, a top one,
+        a middle one and a bottom one -->
+        <div class="site-header__menu-icon__middle"></div>
+      </div>
+
+      <!-- That div encapsulates the button and the nav menu just to hide
+      them first for smaller screens -->
+      <div class="site-header__menu-content">
+        <div class="site-header__btn-container">
+            <a href="#" class="btn">Get in Touch</a>
+        </div>
+        <!-- We want to dispose the link horizontally instead of vertically
+        For the navigation <nav> element, we could have used BEM and
+        thus name its class 'site-header__...'
+        But in BEM, it's ok to nest one block inside another block
+        Moreover, we may be looking at a design pattern when it comes to
+        putting 'ul' elements in a single line, so it would be more appropriate
+        not to give it a class that couples the 'nav' to the block 'site-header'
+        so we can reuse the class later
+        We will then consider that block its own block called 'primary-nav'-->
+        <nav class="primary-nav primary-nav--pull-right">
+          <ul>
+            <li><a href="#our-beginning">Our Beginning</a></li>
+            <li><a href="#features">Features</a></li>
+            <li><a href="#testimonials">Testimonials</a></li>
+          </ul>
+        </nav>
+      </div>
+    </div>
   </header>
 
   <!-- Just for info, we use a normal image (and not a background image),
@@ -86,7 +118,7 @@
         property via a media query only for screen larger than 970px,
         for smaller screens, the image will need to be 100% of the device width
         (thus the 'vw' which stands for viewport width)-->
-        <img sizes="(min-width: 970px) 976px, 100vw" srcset="assets/images/first-trip-low-res.jpg 565, assets/images/first-trip.jpg 976w, assets/images/first-trip-hi-dpi.jpg 1952w" alt="Couple walking down a street.">
+        <img sizes="(min-width: 970px) 976px, 100vw" srcset="assets/images/first-trip-low-res.jpg 565w, assets/images/first-trip.jpg 976w, assets/images/first-trip-hi-dpi.jpg 1952w" alt="Couple walking down a street.">
       </div>
 
       <!-- A row is composed of several columns -->
@@ -266,5 +298,8 @@
       <p><span class="site-footer__text">Copyright &copy; 2016 Clear View Escapes. All rights reserved.</span> <a href="#" class="btn btn--orange">Get in Touch</a></p>
     </div>
   </footer>
+
+  <script src="/temp/scripts/App.js"></script>
+
 </body>
 </html>

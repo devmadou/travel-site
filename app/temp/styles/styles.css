@@ -1,58 +1,44 @@
 /*
 Only contains the imports
-*/
 
-/*
 Beginning a file with an underscore tells the developers to consider this file
 a PARTIAL file not designed to be used on its own
 It is intended to be imported
-*/
 
-/*
 We can even import CSS packages installed with node like 'normalize.css'
 the same way we would import classic CSS files (like the other imports)
-*/
 
-/*
 normalize:
+----------
 normalize.css is an alternative to CSS Reset
 It adjusts the styles of certain elements in an effort to make all web browsers
 render things more consistently
 You can see a tiny margin appearing on each side of the site when applying it
 */
-
 /*! normalize.css v7.0.0 | MIT License | github.com/necolas/normalize.css */
-
 /* Document
    ========================================================================== */
-
 /**
  * 1. Correct the line height in all browsers.
  * 2. Prevent adjustments of font size after orientation changes in
  *    IE on Windows Phone and in iOS.
  */
-
 html {
   line-height: 1.15; /* 1 */
   -ms-text-size-adjust: 100%; /* 2 */
   -webkit-text-size-adjust: 100%; /* 2 */
 }
-
 /* Sections
    ========================================================================== */
-
 /**
  * Remove the margin in all browsers (opinionated).
  */
-
 body {
   margin: 0;
 }
-
 /**
  * Add the correct display in IE 9-.
  */
-
 article,
 aside,
 footer,
@@ -61,146 +47,116 @@ nav,
 section {
   display: block;
 }
-
 /**
  * Correct the font size and margin on `h1` elements within `section` and
  * `article` contexts in Chrome, Firefox, and Safari.
  */
-
 h1 {
   font-size: 2em;
   margin: 0.67em 0;
 }
-
 /* Grouping content
    ========================================================================== */
-
 /**
  * Add the correct display in IE 9-.
  * 1. Add the correct display in IE.
  */
-
 figcaption,
 figure,
 main { /* 1 */
   display: block;
 }
-
 /**
  * Add the correct margin in IE 8.
  */
-
 figure {
   margin: 1em 40px;
 }
-
 /**
  * 1. Add the correct box sizing in Firefox.
  * 2. Show the overflow in Edge and IE.
  */
-
 hr {
   -webkit-box-sizing: content-box;
           box-sizing: content-box; /* 1 */
   height: 0; /* 1 */
   overflow: visible; /* 2 */
 }
-
 /**
  * 1. Correct the inheritance and scaling of font size in all browsers.
  * 2. Correct the odd `em` font sizing in all browsers.
  */
-
 pre {
   font-family: monospace, monospace; /* 1 */
   font-size: 1em; /* 2 */
 }
-
 /* Text-level semantics
    ========================================================================== */
-
 /**
  * 1. Remove the gray background on active links in IE 10.
  * 2. Remove gaps in links underline in iOS 8+ and Safari 8+.
  */
-
 a {
   background-color: transparent; /* 1 */
   -webkit-text-decoration-skip: objects; /* 2 */
 }
-
 /**
  * 1. Remove the bottom border in Chrome 57- and Firefox 39-.
  * 2. Add the correct text decoration in Chrome, Edge, IE, Opera, and Safari.
  */
-
 abbr[title] {
   border-bottom: none; /* 1 */
   text-decoration: underline; /* 2 */
   -webkit-text-decoration: underline dotted;
           text-decoration: underline dotted; /* 2 */
 }
-
 /**
  * Prevent the duplicate application of `bolder` by the next rule in Safari 6.
  */
-
 b,
 strong {
   font-weight: inherit;
 }
-
 /**
  * Add the correct font weight in Chrome, Edge, and Safari.
  */
-
 b,
 strong {
   font-weight: bolder;
 }
-
 /**
  * 1. Correct the inheritance and scaling of font size in all browsers.
  * 2. Correct the odd `em` font sizing in all browsers.
  */
-
 code,
 kbd,
 samp {
   font-family: monospace, monospace; /* 1 */
   font-size: 1em; /* 2 */
 }
-
 /**
  * Add the correct font style in Android 4.3-.
  */
-
 dfn {
   font-style: italic;
 }
-
 /**
  * Add the correct background and color in IE 9-.
  */
-
 mark {
   background-color: #ff0;
   color: #000;
 }
-
 /**
  * Add the correct font size in all browsers.
  */
-
 small {
   font-size: 80%;
 }
-
 /**
  * Prevent `sub` and `sup` elements from affecting the line height in
  * all browsers.
  */
-
 sub,
 sup {
   font-size: 75%;
@@ -208,60 +164,46 @@ sup {
   position: relative;
   vertical-align: baseline;
 }
-
 sub {
   bottom: -0.25em;
 }
-
 sup {
   top: -0.5em;
 }
-
 /* Embedded content
    ========================================================================== */
-
 /**
  * Add the correct display in IE 9-.
  */
-
 audio,
 video {
   display: inline-block;
 }
-
 /**
  * Add the correct display in iOS 4-7.
  */
-
 audio:not([controls]) {
   display: none;
   height: 0;
 }
-
 /**
  * Remove the border on images inside links in IE 10-.
  */
-
 img {
   border-style: none;
 }
-
 /**
  * Hide the overflow in IE.
  */
-
 svg:not(:root) {
   overflow: hidden;
 }
-
 /* Forms
    ========================================================================== */
-
 /**
  * 1. Change the font styles in all browsers (opinionated).
  * 2. Remove the margin in Firefox and Safari.
  */
-
 button,
 input,
 optgroup,
@@ -272,44 +214,36 @@ textarea {
   line-height: 1.15; /* 1 */
   margin: 0; /* 2 */
 }
-
 /**
  * Show the overflow in IE.
  * 1. Show the overflow in Edge.
  */
-
 button,
 input { /* 1 */
   overflow: visible;
 }
-
 /**
  * Remove the inheritance of text transform in Edge, Firefox, and IE.
  * 1. Remove the inheritance of text transform in Firefox.
  */
-
 button,
 select { /* 1 */
   text-transform: none;
 }
-
 /**
  * 1. Prevent a WebKit bug where (2) destroys native `audio` and `video`
  *    controls in Android 4.
  * 2. Correct the inability to style clickable types in iOS and Safari.
  */
-
 button,
 html [type="button"], /* 1 */
 [type="reset"],
 [type="submit"] {
   -webkit-appearance: button; /* 2 */
 }
-
 /**
  * Remove the inner border and padding in Firefox.
  */
-
 button::-moz-focus-inner,
 [type="button"]::-moz-focus-inner,
 [type="reset"]::-moz-focus-inner,
@@ -317,33 +251,27 @@ button::-moz-focus-inner,
   border-style: none;
   padding: 0;
 }
-
 /**
  * Restore the focus styles unset by the previous rule.
  */
-
 button:-moz-focusring,
 [type="button"]:-moz-focusring,
 [type="reset"]:-moz-focusring,
 [type="submit"]:-moz-focusring {
   outline: 1px dotted ButtonText;
 }
-
 /**
  * Correct the padding in Firefox.
  */
-
 fieldset {
   padding: 0.35em 0.75em 0.625em;
 }
-
 /**
  * 1. Correct the text wrapping in Edge and IE.
  * 2. Correct the color inheritance from `fieldset` elements in IE.
  * 3. Remove the padding so developers are not caught out when they zero out
  *    `fieldset` elements in all browsers.
  */
-
 legend {
   -webkit-box-sizing: border-box;
           box-sizing: border-box; /* 1 */
@@ -353,164 +281,128 @@ legend {
   padding: 0; /* 3 */
   white-space: normal; /* 1 */
 }
-
 /**
  * 1. Add the correct display in IE 9-.
  * 2. Add the correct vertical alignment in Chrome, Firefox, and Opera.
  */
-
 progress {
   display: inline-block; /* 1 */
   vertical-align: baseline; /* 2 */
 }
-
 /**
  * Remove the default vertical scrollbar in IE.
  */
-
 textarea {
   overflow: auto;
 }
-
 /**
  * 1. Add the correct box sizing in IE 10-.
  * 2. Remove the padding in IE 10-.
  */
-
 [type="checkbox"],
 [type="radio"] {
   -webkit-box-sizing: border-box;
           box-sizing: border-box; /* 1 */
   padding: 0; /* 2 */
 }
-
 /**
  * Correct the cursor style of increment and decrement buttons in Chrome.
  */
-
 [type="number"]::-webkit-inner-spin-button,
 [type="number"]::-webkit-outer-spin-button {
   height: auto;
 }
-
 /**
  * 1. Correct the odd appearance in Chrome and Safari.
  * 2. Correct the outline style in Safari.
  */
-
 [type="search"] {
   -webkit-appearance: textfield; /* 1 */
   outline-offset: -2px; /* 2 */
 }
-
 /**
  * Remove the inner padding and cancel buttons in Chrome and Safari on macOS.
  */
-
 [type="search"]::-webkit-search-cancel-button,
 [type="search"]::-webkit-search-decoration {
   -webkit-appearance: none;
 }
-
 /**
  * 1. Correct the inability to style clickable types in iOS and Safari.
  * 2. Change font properties to `inherit` in Safari.
  */
-
 ::-webkit-file-upload-button {
   -webkit-appearance: button; /* 1 */
   font: inherit; /* 2 */
 }
-
 /* Interactive
    ========================================================================== */
-
 /*
  * Add the correct display in IE 9-.
  * 1. Add the correct display in Edge, IE, and Firefox.
  */
-
 details, /* 1 */
 menu {
   display: block;
 }
-
 /*
  * Add the correct display in all browsers.
  */
-
 summary {
   display: list-item;
 }
-
 /* Scripting
    ========================================================================== */
-
 /**
  * Add the correct display in IE 9-.
  */
-
 canvas {
   display: inline-block;
 }
-
 /**
  * Add the correct display in IE.
  */
-
 template {
   display: none;
 }
-
 /* Hidden
    ========================================================================== */
-
 /**
  * Add the correct display in IE 10-.
  */
-
 [hidden] {
   display: none;
 }
-
 /*
 This mixin is used to clear any floating element (text, image, ...)
 */
-
 body{
   font-family: 'Roboto', sans-serif;
   color: #333;
 }
-
 /*
 So we don't get images too large that extend the width of the screen device
 */
-
 img{
   max-width: 100%;
   height: auto;
 }
-
 *{
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
 }
-
 /*
 Let's be honest, the default blue color is just crap!
 Let's give all our links a cool color of orange :)
 */
-
 a{
   color: #d59541;
 }
-
 /*
 Beginning a file with an underscore tells the developers to consider this file
 a PARTIAL file not designed to be used on its own
 It is intended to be imported
 */
-
 /*
 ***
 BEM
@@ -526,7 +418,6 @@ M: Modifier   --> class="block__element--modifier"
 A modifier can be used on a block or an element to indicate a change
 to the default state of an object
 */
-
 /*
 *****
 Yrem;
@@ -548,13 +439,11 @@ For example, you need a block to be 480px, you can put instead (480px / 16px) re
 so it adapts automatically whatever the screen size
 
 */
-
 .large-hero{
   position: relative;
   border-bottom: 10px solid #2f5572;
 
 }
-
 .large-hero__image{
     /*
     When creating an image, the browser treats it as a default inline element
@@ -566,18 +455,23 @@ so it adapts automatically whatever the screen size
     */
     display: block;
   }
-
 .large-hero__text-content{
+    padding-top: 88px;  /* Careful, this top padding is the exact same width as the 'CLEAR VIEW ESCAPES' site logo in the header so the content is still centered */
     position: absolute;
     left: 0;
+    top: 50%;
     /* width and text-align just to center the text horizontally */
     width: 100%;
     text-align: center;
-    top: 50%;
     -webkit-transform: translateY(-50%);
-            transform: translateY(-50%);  /* Translate if to half of its own height, a negative value pulls it up */
+            transform: translateY(-50%);
   }
-
+/* Translate if to half of its own height, a negative value pulls it up */
+@media (min-width: 800px){
+.large-hero__text-content{
+      padding-top: 88px  /* Careful, this top padding is the exact same width as the BACKGROUND TRANSPARENT HEIGHT logo in the header so the content is still centered */
+  }
+  }
 .large-hero__title{
     font-weight: 300;
     color: #2f5572;
@@ -590,41 +484,33 @@ so it adapts automatically whatever the screen size
     */
 
   }
-
 /*
   A mixin is just a reusable bit of code
   Inside that mixin, we just say what the mixin should do
   Here, the mixin creates a media query for screen larger than 530px
   */
-
 @media (min-width: 530px){
-
 .large-hero__title{
       font-size: 4.8rem
 
   }
   }
-
 .large-hero__subtitle{
     font-weight: 300;
     color: #2f5572;
     font-size: 1.5rem;
     margin: 0;
   }
-
 /*
   A mixin is just a reusable bit of code
   Inside that mixin, we just say what the mixin should do
   Here, the mixin creates a media query for screen larger than 530px
   */
-
 @media (min-width: 530px){
-
 .large-hero__subtitle{
       font-size: 2.9rem
   }
   }
-
 .large-hero__description{
     color: #FFF;
     font-size: 1.1rem;
@@ -634,25 +520,20 @@ so it adapts automatically whatever the screen size
     margin-left: auto;
     margin-right: auto;
   }
-
 /*
   A mixin is just a reusable bit of code
   Inside that mixin, we just say what the mixin should do
   Here, the mixin creates a media query for screen larger than 530px
   */
-
 @media (min-width: 530px){
-
 .large-hero__description{
       font-size: 1.875rem
   }
   }
-
 /*
 We gave the main '.btn' element the display 'inline-block' because we gave it padding
 That way, its parent and surrounding elements will be aware of its vertical padding
 */
-
 .btn{
   background-color: #2f5572;
   color: #FFF;
@@ -661,31 +542,25 @@ That way, its parent and surrounding elements will be aware of its vertical padd
   display: inline-block;
   
 }
-
 .btn--orange{
     background-color: #d59541;
   }
-
 .btn--large{
     /* We do not specify any font-size so it will default to 1 for tiny screens*/
     padding: 1.1rem 1.9rem;
     
   }
-
 /*
   A mixin is just a reusable bit of code
   Inside that mixin, we just say what the mixin should do
   Here, the mixin creates a media query for screen larger than 530px
   */
-
 @media (min-width: 530px){
-
 .btn--large{
       font-size: 1.25rem
     
   }
   }
-
 /*
 This file is designed to create padding on each side of the element it is applied to
 The main idea is that instead of applying padding to a single element individually,
@@ -696,9 +571,8 @@ On top of adding padding on the left and right side of the screen,
 that wrapper class will also take care of limiting the maximum width
 so we avoid having very long lines of text to read on larger screen
 
-It also centers the content via margin-left and margin right set to auto
+It also centers the content via margin-left and margin-right set to auto
 */
-
 .wrapper{
     padding-left: 18px;
     padding-right: 18px;
@@ -714,40 +588,31 @@ It also centers the content via margin-left and margin right set to auto
 
     overflow: hidden;
 }
-
 /* So we hide the negative -65px margin added to the right */
-
 .wrapper--no-padding-until-medium{
         padding-left: 0;
         padding-right: 0;
     }
-
 @media (min-width: 800px){
-
 .wrapper--no-padding-until-medium{
             padding-left: 18px;
             padding-right: 18px
     }
   }
-
 .wrapper--no-padding-until-large{
         padding-left: 0;
         padding-right: 0;
     }
-
 @media (min-width: 1010px){
-
 .wrapper--no-padding-until-large{
             padding-left: 18px;
             padding-right: 18px
     }
   }
-
 .wrapper--medium{
         /* We make it a bit narrower, (decrease the width) */
         max-width: 976px;
     }
-
 .wrapper .wrapper{
         /*
         We target every wrapper inside another wrapper
@@ -757,71 +622,54 @@ It also centers the content via margin-left and margin right set to auto
         padding-left: 0;
         padding-right: 0;
     }
-
 .wrapper--b-margin{
         margin-bottom: 1rem;
     }
-
 /*
   A mixin is just a reusable bit of code
   Inside that mixin, we just say what the mixin should do
   Here, the mixin creates a media query for screen larger than 530px
   */
-
 @media (min-width: 530px){
-
 .wrapper--b-margin{
             margin-bottom: 3.875rem
     }
   }
-
 /*
 This class will have the responsability of adding top padding
 and bottom padding to each section of the page
 This is a design pattern that will be resused for several sections
 (same as the 'wrapper' section)
 */
-
 .page-section{
     padding: 1.2rem 0;
 }
-
 /* For mobile desktop size */
-
 @media (min-width: 800px){
-
 .page-section{
         padding: 4.5rem 0
 }
   }
-
 .page-section--no-b-padding-until-medium{
         padding-bottom: 0;
     }
-
 @media (min-width: 800px){
-
 .page-section--no-b-padding-until-medium{
             padding-bottom: 4.5rem
     }
   }
-
 .page-section--no-b-padding-until-large{
         padding-bottom: 0;
     }
-
 @media (min-width: 1010px){
-
 .page-section--no-b-padding-until-large{
             padding-bottom: 4.5rem
     }
   }
-
 .page-section--blue{
         background-color: #2f5572;
         color: #FFF;
     }
-
 .page-section--testimonials{
         /*
         For small size screens, there is no need to use the background image and waste
@@ -829,9 +677,7 @@ This is a design pattern that will be resused for several sections
         */
         background-color: #e0e6ef;
     }
-
 @media (min-width: 1010px){
-
 .page-section--testimonials{
             /*
             We tell the image to be aligned towards the top of the section
@@ -845,98 +691,76 @@ This is a design pattern that will be resused for several sections
             background-size: cover
     }
   }
-
 .headline{
     font-size: 1.9rem;
     font-weight: 300;
     color: #2f5572;
 }
-
 /*
   A mixin is just a reusable bit of code
   Inside that mixin, we just say what the mixin should do
   Here, the mixin creates a media query for screen larger than 530px
   */
-
 @media (min-width: 530px){
-
 .headline{
         font-size: 2.875rem
 }
   }
-
 .headline--centered{
         text-align: center;
     }
-
 .headline--orange{
         color: #d59541;
     }
-
 .headline--small{
         font-size: 1.2rem;
     }
-
 /*
   A mixin is just a reusable bit of code
   Inside that mixin, we just say what the mixin should do
   Here, the mixin creates a media query for screen larger than 530px
   */
-
 @media (min-width: 530px){
-
 .headline--small{
             font-size: 1.875rem
     }
   }
-
 .headline--narrow{
         max-width: 500px;
         margin-left: auto;
         margin-right: auto;
     }
-
 .headline--light{
         font-weight: 100;
     }
-
 .headline strong{
         font-weight: 400;
     }
-
 .headline--b-margin-small{
         /* em is relative to the font-size of the element itself */
         margin-bottom: .5em;
     }
-
 .headline--b-margin-large{
         margin-bottom: 1.6em;
     }
-
 .headline--no-t-margin{
         margin-top: 0;
     }
-
 /* This CSS selector will add a blank space after all
     the content in the main 'row' div
     */
-
 .row::after{
     content: "";
     clear: both;
     display: table;     /* For browser support */
   }
-
 .row__b-margin-until-medium{
         margin-bottom: 1rem;
     }
-
 .row--t-padding{
         padding-top: 80px;
     }
-
 @media (min-width: 800px){
-
 .row{
 
         /*
@@ -1025,9 +849,7 @@ This is a design pattern that will be resused for several sections
             width: 50%;
         }
   }
-
 @media (min-width: 1010px){
-
 .row{
 
         /*
@@ -1116,11 +938,8 @@ This is a design pattern that will be resused for several sections
             width: 50%;
         }
   }
-
 /* Begin Equal Height Rules */
-
 @media (min-width: 800px){
-
 .row--equal-height-at-medium{
             /*
             We want to tell the parent row div to use Flexbox
@@ -1133,21 +952,17 @@ This is a design pattern that will be resused for several sections
             display: flex
     }
   }
-
 /*
         This target all the descendents of 'row--equal-height-at-medium'
         we say here: stop being floated and start using Flexbox instead
         */
-
 .row--equal-height-at-medium > div{
             float: none;
             display: -webkit-box;
             display: -ms-flexbox;
             display: flex;
         }
-
 @media (min-width: 1010px){
-
 .row--equal-height-at-large{
             /*
             We want to tell the parent row div to use Flexbox
@@ -1160,23 +975,19 @@ This is a design pattern that will be resused for several sections
             display: flex
     }
   }
-
 /*
         This target all the descendents of 'row--equal-height-at-medium'
         we say here: stop being floated and start using Flexbox instead
         */
-
 .row--equal-height-at-large > div{
             float: none;
             display: -webkit-box;
             display: -ms-flexbox;
             display: flex;
         }
-
 /*
     We select each paragrah nested in that 'generic-content-container' element
     */
-
 .generic-content-container p{
         /* There is more space between each line, actually, this property does not require any
         measurement unit like rem, em, px, ... */
@@ -1184,55 +995,44 @@ This is a design pattern that will be resused for several sections
         margin: 0 0 1.8rem 0;
         font-size: 0.9rem;
     }
-
 /*
   A mixin is just a reusable bit of code
   Inside that mixin, we just say what the mixin should do
   Here, the mixin creates a media query for screen larger than 530px
   */
-
 @media (min-width: 530px){
-
 .generic-content-container p{
             font-size: 1rem    /* The author applied 1.125rem which is too much for me... */
     }
   }
-
 /*
     For any links that lives in a paragraph
     We could have nested that element into the previous 'p' rule
     (but the author does not like nesting that goes beyond 2 levels)
     */
-
 .generic-content-container p a {
         /* By default, the font-weight is 100 */
         font-weight: 700;
     }
-
 .section-title{
     /* Not the whole title should be bold so we lower the font weight a little */
     font-size: 2.4rem;
     font-weight: 300;
     text-align: center;
 }
-
 /*
   A mixin is just a reusable bit of code
   Inside that mixin, we just say what the mixin should do
   Here, the mixin creates a media query for screen larger than 530px
   */
-
 @media (min-width: 530px){
-
 .section-title{
         font-size: 3rem
 }
   }
-
 .section-title strong{
         font-weight: 500;
     }
-
 .section-title__icon{
         /* 'block' will drop the text to a new line */
         display: block;
@@ -1240,15 +1040,12 @@ This is a design pattern that will be resused for several sections
         margin-right: auto;
         margin-bottom: .6rem;
     }
-
 /*
   A mixin is just a reusable bit of code
   Inside that mixin, we just say what the mixin should do
   Here, the mixin creates a media query for screen larger than 530px
   */
-
 @media (min-width: 530px){
-
 .section-title__icon{
             /* On larger screen, the text will sit next to the image */
             display: inline-block;
@@ -1260,76 +1057,61 @@ This is a design pattern that will be resused for several sections
             top: 8px
     }
   }
-
 .section-title--blue{
         color: #2f5572;
     }
-
 .feature-item{
     position: relative;
     padding-bottom: 2.5rem;
 }
-
 /*
   A mixin is just a reusable bit of code
   Inside that mixin, we just say what the mixin should do
   Here, the mixin creates a media query for screen larger than 530px
   */
-
 @media (min-width: 530px){
-
 .feature-item{
         padding-left: 94px
 }
   }
-
 /*
     We want the icon to be positionned in relation to its parent
     so we give the parent a position of 'relative' and the icon
     a position of 'absolute'
     */
-
 .feature-item__icon{
         display: block;
         margin: 0 auto;
     }
-
 /*
   A mixin is just a reusable bit of code
   Inside that mixin, we just say what the mixin should do
   Here, the mixin creates a media query for screen larger than 530px
   */
-
 @media (min-width: 530px){
-
 .feature-item__icon{
             position: absolute;
             left: 0
     }
   }
-
 .feature-item__title{
         font-weight: 300;
         margin-top: .7rem;
         margin-bottom: .8rem;
         text-align: center;
     }
-
 /*
   A mixin is just a reusable bit of code
   Inside that mixin, we just say what the mixin should do
   Here, the mixin creates a media query for screen larger than 530px
   */
-
 @media (min-width: 530px){
-
 .feature-item__title{
             font-size: 1.875rem;
             margin-top: 1rem;
             text-align: left
     }
   }
-
 .testimonial{
     /*
     The background color is a bit transparent
@@ -1340,11 +1122,9 @@ This is a design pattern that will be resused for several sections
     margin-bottom: 98px;
 
 }
-
 .testimonial--last{
         margin-bottom: 0;
     }
-
 /*
     Why the 1px padding on the bottom of the testimonial section?
     This is because the paragrah contained within a testimonial block has by default
@@ -1354,16 +1134,13 @@ This is a design pattern that will be resused for several sections
     creates an overlap that goes beyond the white testimonial block and is thus unseen
     so we add some padding to the testimonial so the paragrah has something to push through
     */
-
 @media (min-width: 1010px){
-
 .testimonial{
         margin-bottom: 0;
         padding: 0 1.8125rem 1px 1.8125rem
 
 }
   }
-
 .testimonial__photo{
         border-radius: 80px;
         /*
@@ -1383,7 +1160,6 @@ This is a design pattern that will be resused for several sections
         top: -80px;
         border: 6px solid rgba(255, 255, 255, .8);
     }
-
 .testimonial__title{
         color: #2f5572;
         text-align: center;
@@ -1391,7 +1167,6 @@ This is a design pattern that will be resused for several sections
         font-weight: 500;
         margin: 0;
     }
-
 .testimonial__subtitle{
         color: #d59541;
         text-align: center;
@@ -1399,7 +1174,6 @@ This is a design pattern that will be resused for several sections
         font-size: 0.9375rem;
         margin: .25rem 0 1rem 0;
     }
-
 /*
 The gulp svg sprites package uses the mustache template system
 meaning any code included within double braces
@@ -1419,7 +1193,6 @@ https://github.com/jkphl/svg-sprite/blob/master/docs/templating.md
 The final processed file (after decoding this file's content) is at:
 './app/temp/sprite/css/sprite.css'
 */
-
 /*
         First, the code put between 
                 ' ACTUAL CODE '
@@ -1464,16 +1237,13 @@ The final processed file (after decoding this file's content) is at:
         As we do not want them to be escaped, we use TRIPLE slashes to specify the
         variable containing slashes to be as it is
         */
-
 .icon{
             background-image: url('/assets/images/sprites/svg/sprite-69f19c2e.svg');
         }
-
 /*
     We create a new CSS rule here i guess, one per icon (since we loop)
     Each icon has its name, height and width specified automatically
     */
-
 .icon--clear-view-escapes {
         width: 142.4px;
         height: 59.53px;
@@ -1483,12 +1253,10 @@ The final processed file (after decoding this file's content) is at:
         */
         background-position: 0 0;
     }
-
 /*
     We create a new CSS rule here i guess, one per icon (since we loop)
     Each icon has its name, height and width specified automatically
     */
-
 .icon--comment {
         width: 64px;
         height: 64px;
@@ -1498,12 +1266,10 @@ The final processed file (after decoding this file's content) is at:
         */
         background-position: 99.70443349753694% 0;
     }
-
 /*
     We create a new CSS rule here i guess, one per icon (since we loop)
     Each icon has its name, height and width specified automatically
     */
-
 .icon--facebook {
         width: 21.23px;
         height: 42.01px;
@@ -1513,12 +1279,10 @@ The final processed file (after decoding this file's content) is at:
         */
         background-position: 26.040607071652357% 45.795830448496034%;
     }
-
 /*
     We create a new CSS rule here i guess, one per icon (since we loop)
     Each icon has its name, height and width specified automatically
     */
-
 .icon--fire {
         width: 56px;
         height: 64px;
@@ -1528,12 +1292,10 @@ The final processed file (after decoding this file's content) is at:
         */
         background-position: 0 99.56481481481481%;
     }
-
 /*
     We create a new CSS rule here i guess, one per icon (since we loop)
     Each icon has its name, height and width specified automatically
     */
-
 .icon--globe {
         width: 64px;
         height: 64px;
@@ -1543,12 +1305,10 @@ The final processed file (after decoding this file's content) is at:
         */
         background-position: 27.586206896551722% 99.56481481481481%;
     }
-
 /*
     We create a new CSS rule here i guess, one per icon (since we loop)
     Each icon has its name, height and width specified automatically
     */
-
 .icon--instagram {
         width: 42.01px;
         height: 42.01px;
@@ -1558,12 +1318,10 @@ The final processed file (after decoding this file's content) is at:
         */
         background-position: 63.2917018534157% 49.234556504346486%;
     }
-
 /*
     We create a new CSS rule here i guess, one per icon (since we loop)
     Each icon has its name, height and width specified automatically
     */
-
 .icon--mail {
         width: 64px;
         height: 48px;
@@ -1573,12 +1331,10 @@ The final processed file (after decoding this file's content) is at:
         */
         background-position: 0 48.00806451612903%;
     }
-
 /*
     We create a new CSS rule here i guess, one per icon (since we loop)
     Each icon has its name, height and width specified automatically
     */
-
 .icon--rain {
         width: 64px;
         height: 64px;
@@ -1588,12 +1344,10 @@ The final processed file (after decoding this file's content) is at:
         */
         background-position: 99.70443349753694% 59.25925925925926%;
     }
-
 /*
     We create a new CSS rule here i guess, one per icon (since we loop)
     Each icon has its name, height and width specified automatically
     */
-
 .icon--star {
         width: 64px;
         height: 64px;
@@ -1603,12 +1357,10 @@ The final processed file (after decoding this file's content) is at:
         */
         background-position: 59.11330049261084% 99.56481481481481%;
     }
-
 /*
     We create a new CSS rule here i guess, one per icon (since we loop)
     Each icon has its name, height and width specified automatically
     */
-
 .icon--twitter {
         width: 51.78px;
         height: 42.06px;
@@ -1618,12 +1370,10 @@ The final processed file (after decoding this file's content) is at:
         */
         background-position: 94.04330452560171% 98.50700323226104%;
     }
-
 /*
     We create a new CSS rule here i guess, one per icon (since we loop)
     Each icon has its name, height and width specified automatically
     */
-
 .icon--wifi {
         width: 60px;
         height: 64px;
@@ -1633,12 +1383,10 @@ The final processed file (after decoding this file's content) is at:
         */
         background-position: 68.79227053140097% 0;
     }
-
 /*
     We create a new CSS rule here i guess, one per icon (since we loop)
     Each icon has its name, height and width specified automatically
     */
-
 .icon--youtube {
         width: 34.75px;
         height: 42px;
@@ -1648,29 +1396,389 @@ The final processed file (after decoding this file's content) is at:
         */
         background-position: 36.69752421959096% 45.792307692307695%;
     }
-
 .site-footer{
     background-color: #2f5572;
     color: #FFF;
     padding: .5rem 0;
     text-align: center;
 }
-
 /*
     So the Copyright phrase takes the whole width
     */
-
 .site-footer__text{
         display: block;
         margin-bottom: 1rem;
         font-weight: 200;
     }
-
 @media (min-width: 800px){
-
 .site-footer__text{
             display: inline;
             margin-bottom: 0;
             margin-right: 1.4rem
+    }
+  }
+.site-header{
+    /*
+    We want the header to overlap on the main background image
+    Thus, a positon of 'absolute' will take it out of its normal form
+    z-index is here to make the header sit on top of the image
+    (higher z-index is on top)
+    
+    For the color, we used the rgba notation with the hexadecimal code
+    which is not common but still possible thanks to the NPM
+    'postcss-hexrgba' package (do not forget to incorporate that package
+    and add it to the array when piping on the 'styles.js' task)
+
+    We also adjust the width since we want the header bar
+    to take the whole available width.
+    When an element is position absolute, it only takes the width
+    corresponding to its content
+    */
+    position: absolute;
+    padding: 10px 0;
+    width: 100%;
+    z-index: 2;
+    /*
+    We want the navigation menu background to fade into view gradually
+    So we apply a transition to the desired property which is 'background-color'
+    We selected the 'ease-out' transition which is nice in that case
+    */
+    -webkit-transition: background-color .3s ease-out;
+    transition: background-color .3s ease-out;
+
+}
+@media (min-width: 800px){
+.site-header{
+        background-color: rgba(47,85,114, .3)
+
+}
+  }
+.site-header--is-expanded{
+        background-color: rgba(47,85,114, .55);
+    }
+/*
+        The button has to be on the right side
+        */
+@media (min-width: 800px){
+.site-header__btn-container{
+            float: right
+    }
+  }
+/*
+    We wanted to take the 'Clear View Escapes' logo out of the flow of the page
+    which maximum height is determined by the links and the 'Get in Touch' button
+    */
+.site-header__logo{
+        position: absolute;
+        background-color: #2f5572;
+        padding: 25px 36px;
+        top: 0;
+        /*
+        This will center the logo on mobile devices
+        */
+        left: 50%;
+        -webkit-transform: translateX(-50%) scale(.8);
+                transform: translateX(-50%) scale(.8);
+        /*
+        The scale is here to decrease the logo's size but it will shrink it
+        by reference to the center of the image so margin can appear on each side
+        of the image
+        This is because by default, the 'transform-origin' property was 50% 50%
+        We will customize it here, so it shrinks according to the top
+        center point of origin
+        */
+        -webkit-transform-origin: 50% 0%;
+                transform-origin: 50% 0%;
+
+    }
+@media (min-width: 800px){
+.site-header__logo{
+            /*
+            Then, we need to undo both of these translation and centering properties
+            on larger screens
+            */
+            left: auto;
+            -webkit-transform: translateX(0);
+                    transform: translateX(0)
+
+    }
+  }
+.site-header__logo__graphic{
+        /*
+        If i remember, it is just here to hide the actual text of the div
+        containing our SVG logo image...
+        */
+        text-indent: -9999px;
+    }
+.site-header__menu-content{
+        /*
+        We replaced the display: block; with opacity set to 0
+        This way the content will still be hidden initially
+        but when the modifier class --is-expanded is added,
+        we can gradually fade to an opacity of 1
+
+        Even if hidden with an opacity of 0, the user can still click the
+        menu and we want to avoid users to be able to click on invisible items
+        this is why we added that z-index negative property
+        (By the way, using 'z-index' implies setting the position to 'relative')
+
+        In 'transition: all .3s ease-out', 'all' stands for transition
+        every property of the element (since we are changing opacity, z-index, ...)
+        */
+        opacity: 0;
+        -webkit-transition: all .3s ease-out;
+        transition: all .3s ease-out;
+        position: relative;
+        z-index: -10;
+        -webkit-transform: scale(1.2);
+                transform: scale(1.2);  /* We want to zoom in a little bit */
+        padding-top: 90px;
+        text-align: center;
+    }
+@media (min-width: 800px){
+.site-header__menu-content{
+            opacity: 1;     /* Same as before, instead of display block */
+            z-index: 1;     /* So it becomes visible then for larger screens */
+            padding-top: 0;
+            -webkit-transform: scale(1);
+                    transform: scale(1)
+    }
+  }
+.site-header__menu-content--is-visible{
+            opacity: 1;
+            z-index: 1;
+            -webkit-transform: scale(1);
+                    transform: scale(1);
+        }
+/*
+    We create a little white square that will serve as menu opener on smaller screens
+    
+    We now we wanted a square (20px by 20px) but we used 19px for the heigh because
+    of the resulting hamburger icon where for a weird reason, we had more
+    spacing between the middle and the bottom line (1px actually) compared to
+    the spacing between the top and the middle bar
+
+    Actually, we created that 3 bars effect based on the 'menu_icon__middle' element
+    then we use sudo elements: via 'before' and 'after' and apply
+    pretty similar styles
+    To summarize, the hamburger menu sicon is created by
+    - middle
+    - ::before
+    - ::after
+    */
+.site-header__menu-icon{
+        width: 20px;
+        height: 20px;
+        /* We remove the background (square) white color because
+        we want a hamburger styled icon */
+        /* background-color: #FFF;*/
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        /*
+        This big 'z-index' is here so the icon has priority and sits always on top
+        of the actual menu-content because if we toggle the button and the menu
+        opens, the menu will sit on top of the button and we will not be able
+        to close it
+        */
+        z-index: 10;
+    }
+@media (min-width: 800px){
+.site-header__menu-icon{
+            /*
+            Large screens won't see the icon at all
+            */
+            display: none
+    }
+  }
+/*
+        This code represents the hamburger bars styling of the menu icon
+        on smaller screens
+        */
+.site-header__menu-icon::before{
+            /* The 'content' property is here so we ensure the bar is displayed */
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 20px;
+            height: 3px;
+            background-color: #FFF;
+            /*
+            We set the bottom left corner to be the transform origin instead
+            of the default 50% 50% which is the middle of the bar
+            This way, we will have the nice appropriate effect when clicking
+            the icon (we want the whole icon to become a cross)
+            */
+            -webkit-transform-origin: 0 0;
+                    transform-origin: 0 0;
+            /*
+            The 'transition' is here to animate the rotation
+            Note that on the top bar, we choose to transition our top bar
+            'transform' property
+            */
+            -webkit-transition: -webkit-transform .3s ease-out;
+            transition: -webkit-transform .3s ease-out;
+            transition: transform .3s ease-out;
+            transition: transform .3s ease-out, -webkit-transform .3s ease-out;
+        }
+.site-header__menu-icon__middle{
+            position: absolute;
+            top: 8px;
+            left: 0;
+            width: 20px;
+            height: 3px;
+            background-color: #FFF;
+            /*
+            The 'transition' is here to animate the rotation
+            Note that on the middle bar, we choose to transition our top bar
+            'opacity' property, (actually, the auther changed it to 'all'
+            so it transitions all properties)
+            */
+            -webkit-transition: all .3s ease-out;
+            transition: all .3s ease-out;
+            /*
+            That effect is very subtle (no problem if you don't get it)
+            Here, the author changes the 'transform-origin' for the middle bar
+            so when it dissapears, the middle hamburger bar shrinks
+            from the right to the left
+            Because by default, the transform-origin is set to 50% 50%
+            so when the opacity goes null, the element dissapears progressively
+            by shrinking from both right and left as if is was burning
+            */
+            -webkit-transform-origin: 0 50%;
+                    transform-origin: 0 50%;
+        }
+.site-header__menu-icon::after{
+            content: "";
+            position: absolute;
+            left: 0;
+            bottom: 1px;
+            width: 20px;
+            height: 3px;
+            background-color: #FFF;
+            -webkit-transform-origin: 0 100%;
+                    transform-origin: 0 100%;
+            /*
+            The 'transition' is here to animate the rotation
+            Note that on the bottom bar, we choose to transition our top bar
+            'transform' property
+            */
+            -webkit-transition: -webkit-transform .3s ease-out;
+            transition: -webkit-transform .3s ease-out;
+            transition: transform .3s ease-out;
+            transition: transform .3s ease-out, -webkit-transform .3s ease-out;
+        }
+/*
+        We modify the hamburger horizontal bars so it becomes progessively an X
+        */
+/*
+            We target the top horizontal bar here
+            We will rotate the bar 45deg clockwise
+            The 'scale' is here because even after diagonal rotation,
+            the rotated top bar seems too short
+            */
+.site-header__menu-icon--close-x::before{
+                -webkit-transform: rotate(45deg) scale(1.25);
+                        transform: rotate(45deg) scale(1.25);
+            }
+/*
+            We used the good old way of selecting elements with the dot '.'
+            for simplicity
+            Moreover, 'transform: scaleX(0)' is here to shrink the middle bar
+            when we click the hamburger icon to open the menu
+            */
+.site-header__menu-icon--close-x .site-header__menu-icon__middle{
+                opacity: 0;
+                -webkit-transform: scaleX(0);
+                        transform: scaleX(0);
+            }
+/*
+            After that, we need to rotate the bottom bar counter clock wise
+            this time
+            The 'translateY' is called here become the rotated bottom bar seems
+            one pixel higher than the rotated top bar
+            */
+.site-header__menu-icon--close-x::after{
+                -webkit-transform: rotate(-45deg) scale(1.25) translateY(1px);
+                        transform: rotate(-45deg) scale(1.25) translateY(1px);
+            }
+.primary-nav{
+    /*
+    The 'padding-top' is here to add some spacing between the Get in Touch button
+    and the 3 nav links on mobile screens
+    */
+    padding-top: 10px;
+
+}
+@media (min-width: 800px){
+.primary-nav{
+        padding-top: 0
+
+}
+  }
+@media (min-width: 800px){
+.primary-nav--pull-right{
+            float: right
+    }
+  }
+/*
+    We target any unordered list that lives within the 'primary-nav' section
+    No need for BEM classes, that would be tedious to have block element classes
+    for <ul>, <li> and <a> elements
+    */
+.primary-nav ul{
+        margin: 0;
+        padding: 0;
+    }
+.primary-nav ul::after{
+    content: "";
+    clear: both;
+    display: table;     /* For browser support */
+  }
+/*
+    The clearFix is used on the parent element
+    */
+.primary-nav li{
+        list-style: none;   /* No bullets for list items */
+        padding-right: 7px;
+        display: inline-block;  /* I added it because float: left does not do the desired effect */
+    }
+/* Plus the author says it horizontally center content... */
+@media (min-width: 800px){
+.primary-nav li{
+            padding-right: 20px;
+            float: left;    /* float left will cause each item to float on one line */
+            display: block
+    }
+  }
+/*
+    To save some spaces on mobile devices, we ommit the padding-right
+    of the last <li> element so all 3 links 'Our Beginning Features Testimonials'
+    fits into only one line even if the screen size is small
+    On desktop screen, we can keep it
+    */
+.primary-nav li:last-child{
+        padding-right: 0;
+    }
+@media (min-width: 800px){
+.primary-nav li:last-child{
+            padding-right: 20px
+    }
+  }
+.primary-nav a{
+        color: #FFF;
+        text-decoration: none;  /* No underline for links */
+        font-weight: 300;
+        display: block;
+        padding: 5px 8px;
+        font-size: .8rem;
+        background-color: rgba(47,85,114, .5);
+    }
+@media (min-width: 800px){
+.primary-nav a{
+            font-size: 1rem;
+            padding: 12px 0;
+            background-color: transparent
     }
   }
