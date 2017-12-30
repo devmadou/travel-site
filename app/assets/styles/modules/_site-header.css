@@ -26,7 +26,19 @@
     */
     transition: background-color .3s ease-out;
     @mixin atMedium{
+        /*
+        Setting position to fixed will allow our header to stick when
+        we scroll down the page
+        */
+        position: fixed;
         background-color: rgba($mainBlue, .3);
+
+        /*
+        We set a darker background when we scroll down the page for our sticky header
+        */
+        &--dark{
+            background-color: rgba(23, 51, 72, .85);
+        }
     }
 
     &--is-expanded{
@@ -57,6 +69,7 @@
         */
         left: 50%;
         transform: translateX(-50%) scale(.8);
+        transition: transform .3s ease-out;
         /*
         The scale is here to decrease the logo's size but it will shrink it
         by reference to the center of the image so margin can appear on each side
@@ -66,6 +79,7 @@
         center point of origin
         */
         transform-origin: 50% 0%;
+
         @mixin atMedium{
             /*
             Then, we need to undo both of these translation and centering properties
@@ -73,6 +87,17 @@
             */
             left: auto;
             transform: translateX(0);
+
+            /*
+            This selector will target the logo only when the dark header is being used
+            This CSS behavior is defined so the logo shrinks slowly to be the exact
+            same size as the header bar when we scroll down the page till
+            the background header gets darker
+
+            */
+            .site-header--dark &{
+                transform: scale(.57);
+            }
         }
 
     }

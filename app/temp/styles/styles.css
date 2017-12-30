@@ -1449,9 +1449,21 @@ The final processed file (after decoding this file's content) is at:
 }
 @media (min-width: 800px){
 .site-header{
+        /*
+        Setting position to fixed will allow our header to stick when
+        we scroll down the page
+        */
+        position: fixed;
         background-color: rgba(47,85,114, .3)
 
+        /*
+        We set a darker background when we scroll down the page for our sticky header
+        */
+
 }
+        .site-header--dark{
+            background-color: rgba(23, 51, 72, .85);
+        }
   }
 .site-header--is-expanded{
         background-color: rgba(47,85,114, .55);
@@ -1479,6 +1491,10 @@ The final processed file (after decoding this file's content) is at:
         left: 50%;
         -webkit-transform: translateX(-50%) scale(.8);
                 transform: translateX(-50%) scale(.8);
+        -webkit-transition: -webkit-transform .3s ease-out;
+        transition: -webkit-transform .3s ease-out;
+        transition: transform .3s ease-out;
+        transition: transform .3s ease-out, -webkit-transform .3s ease-out;
         /*
         The scale is here to decrease the logo's size but it will shrink it
         by reference to the center of the image so margin can appear on each side
@@ -1501,7 +1517,19 @@ The final processed file (after decoding this file's content) is at:
             -webkit-transform: translateX(0);
                     transform: translateX(0)
 
+            /*
+            This selector will target the logo only when the dark header is being used
+            This CSS behavior is defined so the logo shrinks slowly to be the exact
+            same size as the header bar when we scroll down the page till
+            the background header gets darker
+
+            */
+
     }
+            .site-header--dark .site-header__logo{
+                -webkit-transform: scale(.57);
+                        transform: scale(.57);
+            }
   }
 .site-header__logo__graphic{
         /*
@@ -1780,7 +1808,14 @@ The final processed file (after decoding this file's content) is at:
             font-size: 1rem;
             padding: 12px 0;
             background-color: transparent
+            /*
+            We are implementing our desktop stiky header nav link yellow highlighting here
+            This selector will only select '<a>' items that have a class of 'is-current-link'
+            */
     }
+            .primary-nav a.is-current-link{
+                color: #faBB69;
+            }
   }
 .reveal-item{
     /*

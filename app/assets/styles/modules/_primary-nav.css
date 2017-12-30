@@ -65,6 +65,14 @@
             font-size: 1rem;
             padding: 12px 0;
             background-color: transparent;
+            /*
+            We are implementing our desktop stiky header nav link yellow highlighting here
+            This selector will only select '<a>' items that have a class of 'is-current-link'
+            */
+            &.is-current-link{
+                color: #faBB69;
+            }
+
         }
     }
 
