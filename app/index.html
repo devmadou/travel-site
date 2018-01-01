@@ -31,7 +31,7 @@
       them first for smaller screens -->
       <div class="site-header__menu-content">
         <div class="site-header__btn-container">
-            <a href="#" class="btn">Get in Touch</a>
+            <a href="#" class="btn open-modal">Get in Touch</a>
         </div>
         <!-- We want to dispose the link horizontally instead of vertically
         For the navigation <nav> element, we could have used BEM and
@@ -100,7 +100,7 @@
         <h1 class="large-hero__title">Your clarity.</h1>
         <h2 class="large-hero__subtitle">One trip away.</h2>
         <p class="large-hero__description">We create soul restoring journeys that inspire you to be you.</p>
-        <p><a href="#" class="btn btn--orange btn--large">Get Started Today</a></p>
+        <p><a href="#" class="btn btn--orange btn--large open-modal">Get Started Today</a></p>
       </div>
     </div>
   </div>
@@ -303,9 +303,38 @@
 
   <footer class="site-footer">
     <div class="wrapper">
-      <p><span class="site-footer__text">Copyright &copy; 2016 Clear View Escapes. All rights reserved.</span> <a href="#" class="btn btn--orange">Get in Touch</a></p>
+      <p><span class="site-footer__text">Copyright &copy; 2016 Clear View Escapes. All rights reserved.</span> <a href="#" class="btn btn--orange open-modal">Get in Touch</a></p>
     </div>
   </footer>
+
+  <!-- Just as a reminder, the wrapper class is here to center content horizontally
+  and also to give mobile screens a bit of margin on the sides
+  'modal__inner' is just here to center the modal content vertically -->
+  <div class="modal">
+    <div class="modal__inner">
+      <h2 class="section-title section-title--blue section-title--less-margin"><span class="icon icon--mail section-title__icon"></span><span>Get in <strong>Touch</strong></span></h2>
+      
+      <div class="wrapper wrapper--narrow">
+        <p class="modal__description">We will have an online order system in place soon.
+          Until then, connect with us on any of the platforms below!</p>
+      </div>
+
+      <!-- As you can see here, we did not use the BEM methodology for social
+      icons by naming this <div> in  relation to its parent modal <div>
+      This is because, down the road, we might want to use social icons
+      somewhere else on the site so why not make it its own independant block
+      from a BEM perspective -->
+      <div class="social-icons">
+        <a href="#" class="social-icons__icon"><span class="icon icon--facebook"></span></a>
+        <a href="#" class="social-icons__icon"><span class="icon icon--twitter"></span></a>
+        <a href="#" class="social-icons__icon"><span class="icon icon--instagram"></span></a>
+        <a href="#" class="social-icons__icon"><span class="icon icon--youtube"></span></a>
+      </div>
+    </div>
+
+    <div class="modal__close">X</div>
+
+  </div>
 
   <script src="/temp/scripts/App.js"></script>
 

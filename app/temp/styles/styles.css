@@ -613,11 +613,14 @@ It also centers the content via margin-left and margin-right set to auto
         /* We make it a bit narrower, (decrease the width) */
         max-width: 976px;
     }
+.wrapper--narrow{
+        max-width: 470px;
+    }
 .wrapper .wrapper{
         /*
         We target every wrapper inside another wrapper
         The targeted elements should no longer have horizontal padding
-        So it takes the whole sreen's width on mobile device
+        So it takes the whole sreen's width on mobile devices
         */
         padding-left: 0;
         padding-right: 0;
@@ -1059,6 +1062,10 @@ This is a design pattern that will be resused for several sections
   }
 .section-title--blue{
         color: #2f5572;
+    }
+.section-title--less-margin{
+        margin-bottom: 1.3rem;
+        margin-top: 0;
     }
 .feature-item{
     position: relative;
@@ -1833,3 +1840,128 @@ The final processed file (after decoding this file's content) is at:
         -webkit-transform: scale(1);
                 transform: scale(1);
     }
+/*
+We want to create a modal that will take the whole available screen
+(top, bottom, right and left are set to 0)
+And that will be always displayed at first thus the 'fixed' position
+(we will then use JavaScript to display it only if the appropriate button
+is clicked)
+
+*/
+.modal{
+    position: fixed;
+    z-index: 5;
+    background-color: rgba(255, 255, 255, .94);
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    /*
+    We hide the modal initially but we can still click the social links so we
+    set 'visibility' to 'hidden' to prevent that
+    */
+    opacity: 0;
+    visibility: hidden;
+    /*
+    We also create a delayed zoom out effect
+    */
+    -webkit-transform: scale(1.2);
+            transform: scale(1.2);
+    -webkit-transition: all .3s ease-out;
+    transition: all .3s ease-out;
+}
+.modal--is-visible{
+        opacity: 1;
+        visibility: visible;
+        -webkit-transform: scale(1);
+                transform: scale(1);
+    }
+.modal__inner{
+        /*
+        Elements that are positionned absolutly try to shrink wrap their size
+        but we want the element to keep its full width so we use a width of 100%
+        */
+        position: absolute;
+        width: 100%;
+        top: 50%;
+        -webkit-transform: translateY(-50%);
+                transform: translateY(-50%);
+    }
+.modal__description{
+        text-align: center;
+        font-size: 1.3rem;
+        font-weight: 300;
+        line-height: 1.65;
+    }
+.modal__close{
+        position: absolute;
+        top: 15px;
+        right: 15px;
+        font-size: 2rem;
+        /*
+        We stretch it a bit so the X looks more like a same width and height X letter,
+        We only increase its horizontal size with 'scaleX'
+        We increase its size according to its top right hand corner so it
+        does not get outside the screen
+        */
+        -webkit-transform: scaleX(1.2);
+                transform: scaleX(1.2);
+        -webkit-transform-origin: 100% O;
+                transform-origin: 100% O;
+        color: #2f5572;
+    }
+.modal__close:hover{
+            color: #d59541;
+            cursor: pointer;    /* So we get a hand when hover over the 'X' */
+        }
+/*
+We want the social icons to be horizontally centered on the page
+*/
+.social-icons{
+    text-align: center;
+
+}
+/*
+    This will target the link '<a>' to give them an orange background
+    'inline-block' will allow the icons to sit on a single line
+    but 'inline-block' will also allow us to give them a custom height
+    if we need to
+    */
+.social-icons__icon {
+        background-color: #d59541;
+        display: inline-block;
+        margin: 0 5px 5px 5px;
+        /*
+        'width: 33%;'
+        On small screens this way, only 2 icons fit per row
+        instead of having 3 on the top line and a single one on the second line
+        */
+        width: 33%;
+        height: 72px;
+        position: relative;
+    }
+/*
+  A mixin is just a reusable bit of code
+  Inside that mixin, we just say what the mixin should do
+  Here, the mixin creates a media query for screen larger than 530px
+  */
+@media (min-width: 530px){
+.social-icons__icon {
+            margin: 0 5px;
+            /* On larger screens, we can afford having same 'width' and 'height' icons without breaking the design */
+            width: 72px
+    }
+  }
+/*
+        This will target the <span> with the 'icon' class so the icons
+        and ensures that the icons takes some spaces by using a 'block' display
+        so they breathe
+        */
+.social-icons__icon .icon{
+            display: block;
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            -webkit-transform: translate(-50%, -50%);
+                    transform: translate(-50%, -50%);   /* The first coordinate is X and the second Y */
+        }

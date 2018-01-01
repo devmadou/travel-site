@@ -1,0 +1,47 @@
+/*
+We want the social icons to be horizontally centered on the page
+*/
+
+.social-icons{
+    text-align: center;
+
+    /*
+    This will target the link '<a>' to give them an orange background
+    'inline-block' will allow the icons to sit on a single line
+    but 'inline-block' will also allow us to give them a custom height
+    if we need to
+    */
+    &__icon {
+        background-color: $mainOrange;
+        display: inline-block;
+        margin: 0 5px 5px 5px;
+        /*
+        'width: 33%;'
+        On small screens this way, only 2 icons fit per row
+        instead of having 3 on the top line and a single one on the second line
+        */
+        width: 33%;
+        height: 72px;
+        position: relative;
+
+        @mixin atSmall{
+            margin: 0 5px;
+            /* On larger screens, we can afford having same 'width' and 'height' icons without breaking the design */
+            width: 72px;
+        }
+
+        /*
+        This will target the <span> with the 'icon' class so the icons
+        and ensures that the icons takes some spaces by using a 'block' display
+        so they breathe
+        */
+        .icon{
+            display: block;
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);   /* The first coordinate is X and the second Y */
+        }
+    }
+
+}

@@ -1,0 +1,75 @@
+/*
+We want to create a modal that will take the whole available screen
+(top, bottom, right and left are set to 0)
+And that will be always displayed at first thus the 'fixed' position
+(we will then use JavaScript to display it only if the appropriate button
+is clicked)
+
+*/
+
+.modal{
+    position: fixed;
+    z-index: 5;
+    background-color: rgba(255, 255, 255, .94);
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    /*
+    We hide the modal initially but we can still click the social links so we
+    set 'visibility' to 'hidden' to prevent that
+    */
+    opacity: 0;
+    visibility: hidden;
+    /*
+    We also create a delayed zoom out effect
+    */
+    transform: scale(1.2);
+    transition: all .3s ease-out;
+
+    &--is-visible{
+        opacity: 1;
+        visibility: visible;
+        transform: scale(1);
+    }
+
+
+    &__inner{
+        /*
+        Elements that are positionned absolutly try to shrink wrap their size
+        but we want the element to keep its full width so we use a width of 100%
+        */
+        position: absolute;
+        width: 100%;
+        top: 50%;
+        transform: translateY(-50%);
+    }
+
+    &__description{
+        text-align: center;
+        font-size: 1.3rem;
+        font-weight: 300;
+        line-height: 1.65;
+    }
+
+    &__close{
+        position: absolute;
+        top: 15px;
+        right: 15px;
+        font-size: 2rem;
+        /*
+        We stretch it a bit so the X looks more like a same width and height X letter,
+        We only increase its horizontal size with 'scaleX'
+        We increase its size according to its top right hand corner so it
+        does not get outside the screen
+        */
+        transform: scaleX(1.2);
+        transform-origin: 100% O;
+        color: $mainBlue;
+
+        &:hover{
+            color: $mainOrange;
+            cursor: pointer;    /* So we get a hand when hover over the 'X' */
+        }
+    }
+}

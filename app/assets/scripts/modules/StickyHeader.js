@@ -105,7 +105,6 @@ class StickyHeader{
                 element: currentPageSection,
                 handler: function(direction){
                     if (direction == "down"){
-                        console.log("Hi there !")
                         var matchingHeaderLink = currentPageSection.getAttribute("data-matching-link");
                         // This line will cause nothing in the header being highlighted
                         that.headerLinks.removeClass("is-current-link");
