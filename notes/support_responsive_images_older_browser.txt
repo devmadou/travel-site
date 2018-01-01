@@ -1,0 +1,11 @@
+The picture element and the srcset attribute is not supported by all older browsers
+More precisely, we have:
+- 'picture' element: supported by 71% of browser traffic
+- 'srcset' element: supported by 73% of browser traffic
+
+In order to avoid leaving almost one third of people who could browse our site,
+we will install a JavaScript package named Picturefill that will perform its magic
+and make these 'picture' and 'src' element working without any problems
+on older browsers
+
+After Picturefill's passage, the numbers will be 100% of support

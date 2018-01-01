@@ -28,16 +28,23 @@ We use the same 'webpack.config.js' file to configure babel
 
 After configuring babel, we are now ready to transform our Person object
 into a class
+
+We will have 2 entry points: App.js and Vendor.js (now, when adding the lazy
+loading support). We therefore also need to update the 'output' filename
+and keep it dynamic with the '[name].js' argument
 */
 
 var path = require('path');
 
 module.exports = {
-    entry: "./app/assets/scripts/App.js",
+    entry: {
+        App: "./app/assets/scripts/App.js",
+        Vendor: "./app/assets/scripts/Vendor.js"
+    },
     output: {
         // get the current directory name
         path: path.resolve(__dirname, "./app/temp/scripts"),
-        filename: "App.js"
+        filename: "[name].js"
     },
     module: {
         // We specify the different loaders, we will only use one here

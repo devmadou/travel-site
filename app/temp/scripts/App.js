@@ -11387,6 +11387,7 @@ var StickyHeader = function () {
     function StickyHeader() {
         _classCallCheck(this, StickyHeader);
 
+        this.lazyImages = (0, _jquery2.default)(".lazyload");
         // We point to the site header element
         this.siteHeader = (0, _jquery2.default)(".site-header");
         this.headerTriggerElement = (0, _jquery2.default)(".large-hero__title");
@@ -11396,16 +11397,30 @@ var StickyHeader = function () {
         this.headerLinks = (0, _jquery2.default)(".primary-nav a");
         this.createPageSectionWaypoints();
         this.addSmoothScrolling();
+        this.refreshWaypoints();
     }
 
     /*
-    To implement this feature, we just need to call the 'smoothScroll' method
-    on each navigation link and fortunately, we have already selected all our
-    header links
+    This will fix the broken waypoints (waypoints triggering at bad time
+    due to lazy loading)
     */
 
 
     _createClass(StickyHeader, [{
+        key: 'refreshWaypoints',
+        value: function refreshWaypoints() {
+            this.lazyImages.on('load', function () {
+                Waypoint.refreshAll();
+            });
+        }
+
+        /*
+        To implement this feature, we just need to call the 'smoothScroll' method
+        on each navigation link and fortunately, we have already selected all our
+        header links
+        */
+
+    }, {
         key: 'addSmoothScrolling',
         value: function addSmoothScrolling() {
             this.headerLinks.smoothScroll();

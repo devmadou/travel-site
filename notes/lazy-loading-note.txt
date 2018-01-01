@@ -1,0 +1,66 @@
+Lazy Loading definintion
+------------------------
+The idea behind lazy loading is to only download assets when they become necessary
+By default, the browser downloads all the assets of the site which
+can waste data plan and time as well.
+You can check the elements that have been downloaded when refreshing the page
+by looking at the 'Network' tab in the 'Developer Tools' of Chrome
+
+For example, imagine if a user opens our page and does not even scroll
+to the bottom of it, while at the same time we are downloading
+the entire contentof the whole page at one time
+maybe we could select the order in which the browser,
+this would result in a waste of his data plan!!
+
+We can therefore use lazy loading so we can delay elements downloads
+to a more appropriate time depending on the user's behavior.
+
+What we will lazy load
+----------------------
+In this lesson, we will focus on lazy loading our images.
+More precisely, we only want to download images
+as they are getting ready to be scrolled into view
+
+How to install the appropriate tools
+------------------------------------
+To achieve this goal, we will download a lazy loading library from NPM called
+'lazysizes'
+which will take care of everything for us
+We will not even have to write a single line of JavaScript
+We just have to import the library into our main App.js file
+
+One thing important about the import
+------------------------------------
+When it comes to packages like 'lazysizes', that run on their own
+without needing us to write any supplemental code,
+it's a best practice to include independent packages like that in a
+seperate JavaScript file
+In our 'scripts' folder we will create a new Vendor.js file
+
+Waypoints breaking issue
+------------------------
+As we scroll down, lazy loading can causes our waypoints to be triggered
+at the wrong time
+What happens is that our sections get faded into view too early
+before we even have a change to scroll to them
+
+This is because when the page loads, 'waypoint' takes note of the vertical
+positionning of all the elements in the page even if the images haven't laoded
+yet, 'waypoint' knows the exact size of a section and register the vertical
+positionning and says for example:
+--> "When the user is 600px from the top page, trigger that specific waypoint"
+
+The fix is prettey easy, we just need to tell 'waypoint' to refresh its measurements
+everytime a new image is lazy loaded
+
+Actually, you can modify a single file using Waypoints and it will alter the global
+behavior of all the Waypoints because 'waypoint' as been coded in a way that
+the same instance of waypoint is attached to the entire web browser!
+Basically, you have to:
+- target all the elements using a class of 'lazyload'
+- create a 'refreshWaypoint' method
+    --> that method will call a static method 'Waypoint.refreshAll'
+        that will do the trick (calculate the new measurements)
+    --> this method will be executed every time a 'load' event (just loading
+        an image) appears on the page
+

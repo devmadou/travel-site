@@ -8,10 +8,15 @@
   <meta name="keywords" content="Travel planning, travel bundles, travel escapes, affordable travel">
   <meta name="description" content="Your clarity. One trip away. We create soul restoring journeys that inspire you to be you.">
   <link rel="stylesheet" href="temp/styles/styles.css">
+  <!-- This lazy laoding script is important and needs to run as soon as possible
+  This is why we did not put it at the end of the <body> tag -->
+  <script src="/temp/scripts/Vendor.js"></script>
 </head>
 
 <body>
 
+  <!-- By the way all the info about lazyloading are detailled into the
+  'testimonials' section -->
   <header class="site-header">
     <div class="wrapper">
       <div class="site-header__logo">
@@ -124,7 +129,7 @@
         property via a media query only for screen larger than 970px,
         for smaller screens, the image will need to be 100% of the device width
         (thus the 'vw' which stands for viewport width)-->
-        <img sizes="(min-width: 970px) 976px, 100vw" srcset="assets/images/first-trip-low-res.jpg 565w, assets/images/first-trip.jpg 976w, assets/images/first-trip-hi-dpi.jpg 1952w" alt="Couple walking down a street.">
+        <img class="lazyload" sizes="(min-width: 970px) 976px, 100vw" data-srcset="assets/images/first-trip-low-res.jpg 565w, assets/images/first-trip.jpg 976w, assets/images/first-trip-hi-dpi.jpg 1952w" alt="Couple walking down a street.">
       </div>
 
       <!-- A row is composed of several columns -->
@@ -160,11 +165,11 @@
             moreover, I guess before we did not have that problem because we were only creating
             images whose width was 100% of the screen size, but here, we only want
             the image to be one third of the 12 columns) -->
-            <source sizes="404px" srcset="assets/images/our-start.jpg 404w, assets/images/our-start-hi-dpi.jpg 808w" media="(min-width: 1020px)">
+            <source sizes="404px" data-srcset="assets/images/our-start.jpg 404w, assets/images/our-start-hi-dpi.jpg 808w" media="(min-width: 1020px)">
             <!-- Here, we have 320px which is the actual size of the image -->
-            <source sizes="320px" srcset="assets/images/our-start-portrait.jpg 382w, assets/images/our-start-portrait-hi-dpi.jpg 764w" media="(min-width: 800px)">
+            <source sizes="320px" data-srcset="assets/images/our-start-portrait.jpg 382w, assets/images/our-start-portrait-hi-dpi.jpg 764w" media="(min-width: 800px)">
             <!-- No need for any 'sizes' here, because it has to be a single column layout on mobile devices --> 
-            <img srcset="assets/images/our-start-landscape.jpg 800w, assets/images/our-start-landscape-hi-dpi.jpg 1600w" alt="Our founder, Jane Doe" />
+            <img class="lazyload" data-srcset="assets/images/our-start-landscape.jpg 800w, assets/images/our-start-landscape-hi-dpi.jpg 1600w" alt="Our founder, Jane Doe" />
           </picture>
         </div>
         
@@ -247,7 +252,19 @@
     </div>
   </div>
 
-  <div id="testimonials" class="page-section page-section--testimonials page-section--no-b-padding-until-large" data-matching-link="#testimonials-link">
+  <!-- We gave the 'testimonial' main <div> with the id of 'testimonials'
+  the class 'lazyload' so our lazy loading library 'lazysizes' applies
+  lazy loading even to our images defined as background-image in the CSS file
+  Indeed, here the testimonials section has a background image applied with the
+  class 'page-section--testimonials' and we added the 'lazyload' just behind
+  
+  Actually, what happens behind the scene is that 'lazysizes' at the exact moment
+  where the background image is about to appear will swicth the 'lazyload' classname
+  into 'lazyloadED' so into our CSS rule, we can configure the browser so
+  that the background image is applied when the switch in name from 'lazyload'
+  to 'lazyloaded' appears
+  -->
+  <div id="testimonials" class="page-section page-section--testimonials page-section--no-b-padding-until-large lazyload" data-matching-link="#testimonials-link">
     <div class="wrapper wrapper--no-padding-until-large">
       <h2 class="section-title section-title--blue"><span class="icon icon--comment section-title__icon"></span> Real <strong>Testimonials</strong></h2>
 
@@ -257,6 +274,16 @@
       <!-- 'row--equal-height-at-medium' is here to ensure each testimonial has the same
       background height whatever the text size,
       we will achieve that by using flexbox -->
+      
+      <!-- In that section, we will also test lazy loading on image
+      By default when the browsers sees attributes like 'src' or 'srcset'
+      it cant help downloading all the content at one time,
+      we can fortunately prevent this behavior by prefixing the attributes
+      name with 'data-' like 'data-srcset' and
+      give the images a class of 'lazyload'
+      That way, 'lazysizes' will know it will have to do its stuff
+      and will lazy load the image and remove the 'data-' when the image is
+      about to be scrolled to the screen -->
       <div class="row row--gutters row--gutters-small row--equal-height-at-large row--t-padding generic-content-container">
 
         <div class="row__large-4">
@@ -264,7 +291,7 @@
             <!-- Why surround the image inside its own div and not put the classes
             on the 'img' element instead? -->
             <div class="testimonial__photo">
-              <img sizes="160px" srcset="assets/images/testimonial-jane.jpg 160w, assets/images/testimonial-jane-hi-dpi.jpg 320w">
+              <img class="lazyload" sizes="160px" data-srcset="assets/images/testimonial-jane.jpg 160w, assets/images/testimonial-jane-hi-dpi.jpg 320w">
             </div>
             <h3 class="testimonial__title">Jane Doe</h3>
             <h4 class="testimonial__subtitle">9 Time Escaper</h4>
@@ -275,7 +302,7 @@
         <div class="row__large-4">
             <div class="testimonial">
                 <div class="testimonial__photo">
-                  <img sizes="160px" srcset="assets/images/testimonial-john.jpg 160w, assets/images/testimonial-john-hi-dpi.jpg 320w">
+                  <img class="lazyload" sizes="160px" data-srcset="assets/images/testimonial-john.jpg 160w, assets/images/testimonial-john-hi-dpi.jpg 320w">
                 </div>
               <h3 class="testimonial__title">John Smith</h3>
               <h4 class="testimonial__subtitle">4 Time Escaper</h4>
@@ -287,7 +314,7 @@
             <!-- 'testimonial--last' is here to get read of the last bottom margin --> 
             <div class="testimonial testimonial--last">
                 <div class="testimonial__photo">
-                  <img sizes="160px" srcset="assets/images/testimonial-cat.jpg 160w, assets/images/testimonial-cat-hi-dpi.jpg 320w">
+                  <img class="lazyload" sizes="160px" data-srcset="assets/images/testimonial-cat.jpg 160w, assets/images/testimonial-cat-hi-dpi.jpg 320w">
                 </div>
               <h3 class="testimonial__title">Cat McKitty</h3>
               <h4 class="testimonial__subtitle">6 Time Escaper</h4>
