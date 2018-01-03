@@ -44,7 +44,7 @@ This is a design pattern that will be resused for several sections
                 We tell the image to be aligned towards the top of the section
                 as well as center aligned plus no need to be repeated
                 */
-                background: url(/assets/images/testimonials-bg.jpg) top center no-repeat;
+                background: url(../../assets/images/testimonials-bg.jpg) top center no-repeat;
                 /*
                 'background-size' shrink or stretch the image to always be small or large enough
                 to perfectly cover the containing div

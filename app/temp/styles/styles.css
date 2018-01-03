@@ -689,7 +689,7 @@ This is a design pattern that will be resused for several sections
                 We tell the image to be aligned towards the top of the section
                 as well as center aligned plus no need to be repeated
                 */
-                background: url(/assets/images/testimonials-bg.jpg) top center no-repeat;
+                background: url(../../assets/images/testimonials-bg.jpg) top center no-repeat;
                 /*
                 'background-size' shrink or stretch the image to always be small or large enough
                 to perfectly cover the containing div
@@ -1250,7 +1250,7 @@ The final processed file (after decoding this file's content) is at:
         variable containing slashes to be as it is
         */
 .icon{
-            background-image: url('/assets/images/sprites/sprite-e79e95cc.svg');
+            background-image: url('../../assets/images/sprites/sprite-e79e95cc.svg');
         }
 /*
         Here, we want the PNG copy to be applied
@@ -1265,7 +1265,7 @@ The final processed file (after decoding this file's content) is at:
         
         */
 .no-svg .icon{
-            background-image: url('/assets/images/sprites/sprite-e79e95cc.png');
+            background-image: url('../../assets/images/sprites/sprite-e79e95cc.png');
         }
 /*
     We create a new CSS rule here i guess, one per icon (since we loop)

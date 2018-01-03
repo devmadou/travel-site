@@ -64,7 +64,7 @@ The final processed file (after decoding this file's content) is at:
         variable containing slashes to be as it is
         */
         .icon{
-            background-image: url('/assets/images/sprites/sprite-e79e95cc.svg');
+            background-image: url('../../assets/images/sprites/sprite-e79e95cc.svg');
         }
 
         /*
@@ -80,7 +80,7 @@ The final processed file (after decoding this file's content) is at:
         
         */
         .no-svg .icon{
-            background-image: url('/assets/images/sprites/sprite-e79e95cc.png');
+            background-image: url('../../assets/images/sprites/sprite-e79e95cc.png');
         }
     /*
     We create a new CSS rule here i guess, one per icon (since we loop)
