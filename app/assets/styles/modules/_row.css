@@ -190,7 +190,9 @@
     }
 
     /* Begin Equal Height Rules */
-    &--equal-height-at-medium{
+    /* Here, we only target devices that supports flexbox and investigate that
+    via Modernizr */
+    .flexbox &--equal-height-at-medium{
         @mixin atMedium{
             /*
             We want to tell the parent row div to use Flexbox
@@ -211,7 +213,8 @@
         }
     }
 
-    &--equal-height-at-large{
+    .flexbox &--equal-height-at-large{
+
         @mixin atLarge{
             /*
             We want to tell the parent row div to use Flexbox

@@ -1,23 +1,27 @@
 var gulp = require('gulp');
 svgSprites = require('gulp-svg-sprite'),
 rename = require('gulp-rename'),
-del = require('del');
+del = require('del'),
+svg2png = require('gulp-svg2png');
 
 var config = {
+    shape: {
+        spacing: {
+            padding: 1
+        }
+    },
     mode: {
         css:{
-            /* The 'sprite' attribute is the name of the output sprite file
-            to me it seems like a MIME type... */
-            sprite: 'svg/sprite.svg',
+            variables: {
+                replaceSvgWithPng: function(){
+                    return function(sprite, render){
+                        // We simply select the sprite file and replace its extension with '.png' instead of svg
+                        return render(sprite).split('.svg').join('.png');
+                    }
+                }
+            },
+            sprite: 'sprite.svg',
             render: {
-                /*
-                The reason for that part is explained below
-                We tell svg sprites to CSS (instead of less, sass, ...)
-                The 'template' file will be processed and copied automatically
-                into the './app/temp/sprite/css/svg' folder
-                so we eventually will have:
-                './app/temp/sprite/css/svg/sprite.css'
-                */
                 css:{
                     template: './gulp/templates/sprite.css'
                 }
@@ -27,17 +31,23 @@ var config = {
 }
 
 gulp.task('beginClean', function(){
-    return del(['.app/temp/sprite', './app/assets/images/sprite']);
+    return del(['.app/temp/sprite', './app/assets/images/sprites']);
 })
 
 gulp.task('createSprite', ['beginClean'], function(){
     return gulp.src('./app/assets/images/icons/**/*.svg')
-        .pipe(svgSprites(config))
+        .pipe(svgSprites(config))   // We pipe that file to our package, seems weird to me, as if it was going through a process via the whole library and was returned after...
         .pipe(gulp.dest('./app/temp/sprite'));
 });
 
-gulp.task('copySpriteGraphic', ['createSprite'], function(){
-    return gulp.src('./app/temp/sprite/css/**/*.svg')
+gulp.task('createPngCopy', ['createSprite'], function(){
+    return gulp.src('./app/temp/sprite/css/*.svg')
+    .pipe(svg2png())
+    .pipe(gulp.dest('./app/temp/sprite/css'));
+});
+
+gulp.task('copySpriteGraphic', ['createPngCopy'], function(){
+    return gulp.src('./app/temp/sprite/css/**/*.{svg,png}')
         .pipe(gulp.dest('./app/assets/images/sprites'));
 });
 
@@ -51,4 +61,4 @@ gulp.task('endClean', ['copySpriteGraphic', 'copySpriteCSS'], function(){
     return del('./app/temp/sprite');
 });
 
-gulp.task('icons', ['beginClean', 'createSprite', 'copySpriteGraphic', 'copySpriteCSS', 'endClean']);
+gulp.task('icons', ['beginClean', 'createSprite', 'createPngCopy', 'copySpriteGraphic', 'copySpriteCSS', 'endClean']);

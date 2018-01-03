@@ -273,7 +273,16 @@
       <!-- and 'row--gutters-small' is applied to create less padding between each columns -->
       <!-- 'row--equal-height-at-medium' is here to ensure each testimonial has the same
       background height whatever the text size,
-      we will achieve that by using flexbox -->
+      we will achieve that by using Flexbox
+      
+      Using Flexbox in non supporting browser can break the design
+      Especially here, no flexbox present results in our 3 columns
+      being merged to a single one when using it
+      To avoid that, we will use Modernizr that will skip the defined
+      'row--equal-height-at-large' rule that is now available only for HTML
+      that have the 'flexbox' class of Modernizr added
+      The counterpart is that we will not have that same height columns
+      but this will keep the browser from bad interpretations -->
       
       <!-- In that section, we will also test lazy loading on image
       By default when the browsers sees attributes like 'src' or 'srcset'

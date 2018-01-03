@@ -9,3 +9,5 @@ and make these 'picture' and 'src' element working without any problems
 on older browsers
 
 After Picturefill's passage, the numbers will be 100% of support
+We will add Picturefill to the 'Vendor.js' file by importing it
+That is actually all what we need to do, just import Picturefill

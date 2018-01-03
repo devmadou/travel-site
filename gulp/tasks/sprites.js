@@ -19,10 +19,15 @@ and have them automatically merge into a single image file
 /*
 To create sprites, we need to require the 'gulp-svg-sprite' package first
 */
+
+/*
+gulp-svg2png is used to generate a PNG version of our SVG sprite file
+*/
 var gulp = require('gulp');
 svgSprites = require('gulp-svg-sprite'),
 rename = require('gulp-rename'),
-del = require('del');
+del = require('del'),
+svg2png = require('gulp-svg2png');
 
 /*
 This 'config' object literal will be used to configure svgSprites
@@ -30,11 +35,55 @@ The 'config' variable just has a 'mode' property which has a 'css' property itse
 This is enough to configure 'svg-sprites' and create the global single icon image
 */
 var config = {
+    /*
+    'shape' is here to fix the SVG icons that have little artifacts
+    due to slightly incorrect coordinates that lead to icons overlapping
+    To fix it, we will add a 1px padding between each icons
+    The padding value all depends on the overlapping notices via visual observation
+    */
+    shape: {
+        spacing: {
+            padding: 1
+        }
+    },
     mode: {
         css:{
-            /* The 'sprite' attribute is the name of the output sprite file
-            to me it seems like a MIME type... */
-            sprite: 'svg/sprite.svg',
+            /*
+            'variables' is here to create a filter function to select the right
+            file (SVG or PNG) depending on browser support
+
+            The main idea is to configure the template 'sprite.css' to select
+            the PNG file for the '.no-svg .icons' selector
+
+            Within that function we will return the 'render' method that will
+            give us access to the CSS that lives in the template
+            In that file, we will look for (and select) that sprite variable
+            which is that dynamic filename we have no other way of predicting
+            ('sprite-jdzjazda.svg')
+            One we retrieve it, we will transform it
+
+            'split' will create an array and remove the '.svg' extension
+            so we can reform (join) it with the '.png' extension
+
+            After that piece of configuration, you can look in the generated '_sprite.css'
+            file into the 'app/assets/styles/modules' folder to see the correct path being
+            set for the 'background-image' 'url' attribute of the '.no-svg .icons' selector
+            */
+            variables: {
+                replaceSvgWithPng: function(){
+                    return function(sprite, render){
+                        // We simply select the sprite file and replace its extension with '.png' instead of svg
+                        return render(sprite).split('.svg').join('.png');
+                    }
+                }
+            },
+            /*
+            The 'sprite' attribute is the name of the output sprite file
+            to me it seems like a MIME type... 
+            Actually, I removed the 'svg/', indeed, we had: 'svg/sprite.svg'
+            but when we added PNG support for non SVG browser I removed it...
+            */
+            sprite: 'sprite.svg',
             render: {
                 /*
                 The reason for that part is explained below
@@ -66,7 +115,7 @@ We provide the function an array of folders we want to delete
 */
 
 gulp.task('beginClean', function(){
-    return del(['.app/temp/sprite', './app/assets/images/sprite']);
+    return del(['.app/temp/sprite', './app/assets/images/sprites']);
 })
 
 /*
@@ -84,8 +133,21 @@ gulp.task('createSprite', ['beginClean'], function(){
        so we use 'gulp.dest' and give it a directory name
     */
     return gulp.src('./app/assets/images/icons/**/*.svg')
-        .pipe(svgSprites(config))
+        .pipe(svgSprites(config))   // We pipe that file to our package, seems weird to me, as if it was going through a process via the whole library and was returned after...
         .pipe(gulp.dest('./app/temp/sprite'));
+});
+
+/*
+We will add a task to create our PNG sprite file so we can use it for browsers
+that do not support SVG files
+This task will only run if the 'createSprite' task has run before
+(Keep in mind we also need to update other task so they include the 'createPngCopy'
+as a dependency like the 'copySpriteGraphic' and the 'icons' tasks)
+*/
+gulp.task('createPngCopy', ['createSprite'], function(){
+    return gulp.src('./app/temp/sprite/css/*.svg')
+    .pipe(svg2png())
+    .pipe(gulp.dest('./app/temp/sprite/css'));
 });
 
 /*
@@ -107,9 +169,15 @@ The following takes place in the ./gulp/templates/sprite.css
 /*
 This task is just here to copy the final sprite image into
 the dedicated 'images' folder of the application to stay organized
+
+We also took into account the file created with the PNG extension
+for browser that does not support SVG
+
+We added the dependency upon 'createPngCopy' because that task is dependent upon
+the 'createSprite' task for SVG (PNG) support for browsers
 */
-gulp.task('copySpriteGraphic', ['createSprite'], function(){
-    return gulp.src('./app/temp/sprite/css/**/*.svg')
+gulp.task('copySpriteGraphic', ['createPngCopy'], function(){
+    return gulp.src('./app/temp/sprite/css/**/*.{svg,png}')
         .pipe(gulp.dest('./app/assets/images/sprites'));
 });
 /*
@@ -147,4 +215,4 @@ separately
 This task will be named 'icons'
 */
 
-gulp.task('icons', ['beginClean', 'createSprite', 'copySpriteGraphic', 'copySpriteCSS', 'endClean']);
+gulp.task('icons', ['beginClean', 'createSprite', 'createPngCopy', 'copySpriteGraphic', 'copySpriteCSS', 'endClean']);

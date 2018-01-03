@@ -1,3 +1,5 @@
+import '../../temp/scripts/modernizr';
+import 'picturefill';
 import 'lazysizes';
 
 /*
@@ -8,4 +10,9 @@ folder into the 'index.html' file
 
 The Vendor.js will be imported at the end of the head section because we want it
 to run on the page as soon as possible so it performs its lazy loading work
+
+'picturefill' is here to ensure responsive images (<picture> and 'srcset' attributes
+work correctly in older browser, we just have to import it)
+
+'modernizr' is just here to ensure SVG support (and more actually)
 */

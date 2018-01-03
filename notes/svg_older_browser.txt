@@ -1,0 +1,33 @@
+SVG support in web browser is fantastic
+Regarding browser support, we have:
+- SVG files: 97%
+- PNG files: 100%
+
+Our plan to make our website browser compatible at 100% is:
+- send the .svg icons by default
+- send the .png icons for those without svg support
+
+Here is how we will proceed:
+
+1. Use Gulp to automatically create a PNG copy of our SVG icon sprite
+   --> you will need to install the gulp-svg2png package
+   --> the addings are in the 'sprites.js' file into the gulp folder
+
+2. Only send the PNG version to browsers that don't support SVG
+   But how can we now if a particular browser supports SVG or not?
+   --> We can use a tool called Modernizr to test web browser for SVG support
+   --> npm install gulp-modernizr --save-dev
+   Modernizr will test some features on the fly like checking the SVG support
+   For that specific example, if the browser supports SVG, it will add a class
+   to the <html> root element of the page of 'svg', if not, it will add the class
+   'no-svg'
+   That way, we can customize our style sheets to handle SVG support
+   by using these auto-generated classes as info for any browser
+   We will play on that to send a different sprite file depending on the browser
+   We will leverage that package into the 'gulp/tasks/modernizr.js' file
+
+   After the configuration is done, whenever we use in any CSS file a class like
+   '.flexbox' or '.cssanimations' or '.svg', modernizr will include that class into
+   the root <html> element just like that so we know directly if the feature
+   is supported on the fly:
+   --> <html class="svg cssanimations flexbox">

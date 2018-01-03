@@ -14,7 +14,7 @@ var gulp = require('gulp'),
 webpack = require('webpack');
 
 // The 'callback' argument is here to ensure that gulp is aware when webpack completes
-gulp.task('scripts', function(callback){
+gulp.task('scripts', ['modernizr'], function(callback){
     /*
     We call 'webpack' as in command line and 
     help webpack by providing our webpack config file location

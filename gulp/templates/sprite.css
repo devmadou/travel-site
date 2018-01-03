@@ -68,6 +68,22 @@ The final processed file (after decoding this file's content) is at:
         .icon{
             background-image: url('/assets/images/sprites/{{{sprite}}}');
         }
+
+        /*
+        Here, we want the PNG copy to be applied
+        For that, we will create a filter function we choose to call
+        'replaceSvgWithPng' that will either select,
+        the SVG or the PNG version depending on browser support in the 'config'
+        object of the 'gulp/tasks/sprites.js'
+        We will actually call that function in the 'url' path argument,
+        more precisely, we will wrap the {{{sprite}}} variable
+        within our filter function
+        To do that, we need to enclose the sprite variable with the following syntax:
+        {{#functionName}}--variable--{{/functionName}}
+        */
+        .no-svg .icon{
+            background-image: url('/assets/images/sprites/{{#replaceSvgWithPng}}{{{sprite}}}{{/replaceSvgWithPng}}');
+        }
     {{/first}}
     /*
     We create a new CSS rule here i guess, one per icon (since we loop)
